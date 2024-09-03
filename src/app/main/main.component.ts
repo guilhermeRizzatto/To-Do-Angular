@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
+  options:boolean = false;
+
+  showOptions():void{
+      if(this.options == true){
+        this.options = false;
+      } else {
+        this.options = true;
+      }
+  }
+
+
+
 }

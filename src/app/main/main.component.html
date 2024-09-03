@@ -4,10 +4,13 @@
         <div id="sideBar">
             <div class="menu">
                 <div class="topBar">
+                    <button class="expandOptions" (click)="showOptions()"  [ngClass]="{'expandOptions': true, 'active': options}">
+
+                    </button>
                 
                 
                 </div>
-                <div class="options">
+                <div class="options" *ngIf="options">
                     <button class="changePass">
 
                     </button>
