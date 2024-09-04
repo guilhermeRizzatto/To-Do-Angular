@@ -4,27 +4,25 @@
         <div id="sideBar">
             <div class="menu">
                 <div class="topBar">
+                    <img src="/account.png" class="accountIcon">
+                    <p class="account">Conta</p>
                     <button class="expandOptions" (click)="showOptions()"  [ngClass]="{'expandOptions': true, 'active': options}">
-
+                        <img src="/arrowDown512.png" class="arrowDown">
                     </button>
-                
-                
                 </div>
                 <div class="options" *ngIf="options">
                     <button class="changePass">
+                        <p class="passText">Trocar Senha</p>
 
                     </button>
-                
-                
                 </div>
             </div>
         
             <button class="addButton">
-
+                <img src="/add.png" class="addIcon">
             </button>
         </div>
         <div id="board">
-            
         </div>
     </div>
 </div>
