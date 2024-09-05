@@ -119,6 +119,7 @@
 
         .closeChangePassCard{
             display: flex;
+            cursor: pointer;
             align-content: center;
             justify-content: center;
             position: absolute;
@@ -141,6 +142,7 @@
     }
 
     .inputChangePassword{
+        cursor: text;
         text-align: center;
         justify-content: center;
         align-items: center;
@@ -177,6 +179,7 @@
     }
 
     .saveNewPassword{
+        cursor: pointer;
         position: relative;
         display: flex;
         text-align: center;
@@ -211,6 +214,7 @@
 }
 
 #sideBar .addButton{
+    cursor: pointer;
     position: relative;
     bottom: 0;
     background-color: #775EBB;
@@ -236,6 +240,7 @@
     box-sizing: border-box;
     padding: 0px;
     justify-content: center;
+    cursor: pointer;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -288,6 +293,7 @@
     position: relative;
     margin-bottom: 10px;
     align-self: end;
+    cursor: pointer;
     height: 25px;
     width: 25px;
     border-radius: 0px;
