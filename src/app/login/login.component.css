@@ -1,0 +1,781 @@
+#screen{
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #F6F3FF;
+
+    .loginCard{
+    height: 300px;
+    width: 300px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #B49AFF;
+
+    transition: height 0.35s ease-in-out, width 0.35s ease-in-out;
+    
+    .titleLogin{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        background-color: #ffffff;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 21.5px;
+        color: #775EBB;
+    }
+
+
+    .haveAccount{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: none;
+        width: 80%;
+        height: 40px;
+        background-color: #292929;
+        cursor: pointer;
+        margin-bottom: 40px;
+        margin-top: 80px;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 18.5px;
+        color: #FFFFFF;
+
+        transition: color 0.15s ease-in-out;
+    }
+
+    .haveAccount:hover{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: none;
+        width: 80%;
+        height: 40px;
+        background-color: #292929;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 18.5px;
+        color: #B49AFF;
+    }
+
+    .createAccount{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: none;
+        width: 80%;
+        height: 40px;
+        background-color: #292929;
+        cursor: pointer;
+        margin-bottom: 40px;
+        margin-top: 0px;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 18.5px;
+        color: #FFFFFF;
+
+        transition: color 0.15s ease-in-out;
+    }
+
+    .createAccount:hover{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: none;
+        width: 80%;
+        height: 40px;
+        background-color: #292929;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 18.5px;
+        color: #B49AFF;
+    }
+
+    }
+
+    .titleHaveAccount{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        background-color: #292929;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 21.5px;
+        color: #ffffff;
+    }
+
+    .titleCreateAccount{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        background-color: #292929;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 21.5px;
+        color: #ffffff;
+    }
+
+    .errorEmail{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        background-color: #FF5050;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 21.5px;
+        color: #ffffff;
+    }
+
+    .errorPassword{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 50px;
+        top: 0;
+        background-color: #FF5050;
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 21.5px;
+        color: #ffffff;
+    }
+
+    .haveAccountCard{
+        height: 300x;
+        width: 500px;
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #B49AFF;
+
+    }
+
+    .createAccountCard{
+        height: 320px;
+        width: 500px;
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #B49AFF;
+    }
+
+    .emailEnterCardDisable{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 20px;
+        margin-top: 60px;
+
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+        
+    }
+
+    .emailEnterCardActive{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 20px;
+        margin-top: 35px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+
+        .emailEnterIndicator{
+            width: 80px;
+            height: 40px;
+            
+            left: 0%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #775EBB;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #FFFFFF;
+        }
+
+        .inputEmail{
+            width: 90%;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+            cursor: text;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+            color: #292929;
+
+            background-color: #FFFFFF;
+        }
+        
+    }
+
+    .emailCreateCardActive{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 20px;
+        margin-top: 0px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+
+        .emailEnterIndicator{
+            width: 80px;
+            height: 40px;
+            
+            left: 0%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #775EBB;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #FFFFFF;
+        }
+
+        .inputEmail{
+            width: 90%;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+            cursor: text;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+            color: #292929;
+
+            background-color: #FFFFFF;
+        }
+    }
+
+    .nameCreateCardDisable{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 40px;
+        margin-top: 60px;
+
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+        
+    }
+
+    .nameCreateCardActive{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 20px;
+        margin-top: 40px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+
+        .nameCreateIndicator{
+            width: 80px;
+            height: 40px;
+            
+            left: 0%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #775EBB;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #FFFFFF;
+        }
+
+        .inputName{
+            width: 90%;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+            cursor: text;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+            color: #292929;
+
+            background-color: #FFFFFF;
+        }
+        
+    }
+
+    .passEnterCardDisable{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 40px;
+        margin-top: 60px;
+
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+        
+    }
+
+    .passEnterCardActive{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 15px;
+        margin-top: 0px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+
+        .passIndicator{
+            width: 80px;
+            height: 40px;
+            
+            left: 0%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #775EBB;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #FFFFFF;
+        }
+
+        .inputPass{
+            cursor: text;
+            width: 90%;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 18.5px;
+            color: #292929;
+
+            background-color: #FFFFFF;
+        }
+        
+    }
+
+    .passCreateCardActive{
+        width: 93%;
+        height: 40px;
+        position: relative;
+        margin-bottom: 15px;
+        margin-top: 0px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #292929;
+
+        .passIndicator{
+            width: 80px;
+            height: 40px;
+            
+            left: 0%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #775EBB;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #FFFFFF;
+        }
+
+        .inputPass{
+            cursor: text;
+            width: 90%;
+            height: 40px;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            padding-left: 10px;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 18.5px;
+            color: #292929;
+
+            background-color: #FFFFFF;
+        }
+        
+    }
+
+ 
+
+    .buttonsDisable{
+        display: none;
+        flex-direction: column;
+        width: 93%;
+        height: 35px;
+        .backButtonDisable{
+            display: flex;
+            height: 35px;
+            width: 100px;
+            margin-top: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+    
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #292929;
+        }
+
+        .enterButtonDisable{
+            display: none;
+        }
+
+        .createButtonDisable{
+            display: none;
+        }
+
+    }
+
+    .buttonsActive{
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 93%;
+        height: 35px;
+        .backButtonActive{
+            position: absolute;
+            cursor: pointer;
+            left: 0;
+            height: 35px;
+            width: 100px;
+            margin-top: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+            background-color: #292929;
+    
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #F9C200;
+
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+        }
+
+        .backButtonActive:hover{
+            background-color: #F9C200;
+            color: #292929;
+        }
+
+
+        .enterButtonActive{
+            display: block;
+            position: relative;
+            cursor: pointer;
+            height: 35px;
+            width: 160px;
+            margin-top: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+            background-color: #292929;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #C0FF6F;
+
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+
+        }
+
+        .enterButtonActive:hover{
+            position: relative;
+            cursor: pointer;
+            height: 35px;
+            width: 160px;
+            margin-top: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+            background-color: #C0FF6F;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #292929;
+
+        }
+
+        .createButtonActive{
+            display: block;
+            position: relative;
+            cursor: pointer;
+            height: 35px;
+            width: 160px;
+            margin-top: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+            background-color: #292929;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #C0FF6F;
+
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+        }
+
+        .createButtonActive:hover{
+            position: relative;
+            cursor: pointer;
+            height: 35px;
+            width: 160px;
+            margin-top: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border: none;
+            background-color: #C0FF6F;
+
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #292929;
+
+        }
+    }
+
+    .enterSucessDisable{
+        width: 100%;
+        height: 0px;
+        position: absolute;
+        overflow: hidden;
+
+    }
+
+    .enterSucessActive{
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 270px;
+        background-color: #C0FF6F;
+
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    
+
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 550;
+        font-style: normal;
+        font-size: 21.5px;
+        color: #292929;
+
+        transition: height 0.25s ease-in-out;
+
+    }
+
+}

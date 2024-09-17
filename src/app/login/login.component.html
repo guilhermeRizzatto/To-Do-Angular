@@ -1,0 +1,64 @@
+<div id="screen">
+    <div class="loginCard" [ngClass]="{'loginCard': true, 'haveAccountCard': enterAccountActive , 'createAccountCard': createAccountActive}">
+        <div class="titleLogin" *ngIf="!enterAccountActive">
+            <p class="loginText">Login</p>
+        </div>
+        <div class="titleHaveAccount" *ngIf="enterAccountActive">
+            <p class="createText">Entre com sua conta.</p>
+        </div>
+        <div class="titleCreateAccount" *ngIf="createAccountActive">
+            <p class="createText">Crie sua conta.</p>
+        </div>
+        <div class="errorEmail" *ngIf="errorEmail"> 
+            <p class="emailErrorText">Erro: não existe uma conta com esse email.</p>
+        </div>
+        <div class="errorPassword" *ngIf="errorPass"> 
+            <p class="errorPasswordText">Erro: senha errada.</p>
+        </div>
+        
+
+
+        <button class="haveAccount" (click)="toggleEnterAccount()" *ngIf="displayButtonsInLogin">
+            Ja tenho uma conta.
+        </button>
+        <button class="createAccount" (click)="toggleCreateAccount()" *ngIf="displayButtonsInLogin">
+            Criar uma conta.
+        </button>
+
+        <div class="nameCreateCardDisable"  [ngClass]="{'nameCreateCardDisable': true, 'nameCreateCardActive': createAccountActive}">
+            <div class="nameCreateIndicator">
+                <p>Nome</p>
+            </div>
+            <input class="inputName">
+        </div>
+        <div class="emailEnterCardDisable"  [ngClass]="{'emailEnterCardDisable': true, 'emailEnterCardActive': enterAccountActive, 'emailCreateCardActive': createAccountActive}">
+            <div class="emailEnterIndicator">
+                <p>Email</p>
+            </div>
+            <input class="inputEmail">
+        </div>
+        <div class="passEnterCardDisable"  [ngClass]="{'passEnterCardDisable': true, 'passEnterCardActive': enterAccountActive, 'passCreateCardActive':createAccountActive}">
+            <div class="passIndicator">
+                <p>Senha</p>
+            </div>
+            <input class="inputPass" type="password">
+        </div>
+        
+        <div class="buttonsDisable" [ngClass]="{'buttonsDisable': true, 'buttonsActive': displayComebackButton}">
+            <button class="backButtonDisable" (click)="comeback()" [ngClass]="{'backButtonDisable': true, 'backButtonActive': displayComebackButton}">
+                <- Voltar
+            </button>
+            <button class="enterButtonDisable" (click)="toggleError()" [ngClass]="{'enterButtonDisable': true, 'enterButtonActive': enterAccountActive}">
+                Entrar ->
+            </button>
+            <button class="createButtonDisable" (click)="toggleError()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
+                Criar conta ->
+            </button>
+
+        </div>
+        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo de volta, (nome)!</div>
+
+
+
+    </div>
+</div>

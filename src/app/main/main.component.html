@@ -10,21 +10,24 @@
                         <img src="/arrowDown512.png" class="arrowDown">
                     </button>
                 </div>
-                <div class="options" *ngIf="options">
-                    <button class="changePass" (click)="changePassEnable()">
+                <div class="options" [ngClass]="{'options': true, 'activeOptions': options}">
+                    <button class="changePass" (click)="changePassEnable()" [ngClass]="{'changePass': true, 'activeChangePass': options}">
                         <p class="passText">Trocar Senha</p>
                     </button>
-                    <div class="changePassCard" *ngIf="changePassShow">
-                        <div class="titleChangePassCard">
-                            <p class="textChangePassCard">Senha Nova</p>
-                            <button class="closeChangePassCard" (click)="changePassEnable()">
-                                <img src="/close.png" class="closeChangePassImg">
-                            </button>
-                        </div>
-                        <input type="password" class="inputChangePassword" placeholder="Digite a sua nova senha">
-                        <button class="saveNewPassword">
-                            <p class="savePassword">Salvar</p>
+                </div>
+                <div class="changePassCard" *ngIf="changePassShow" [@enableChangePass]>
+                    <div class="titleChangePassCard">
+                        <p class="textChangePassCard">Senha Nova</p>
+                        <button class="closeChangePassCard" (click)="changePassEnable()">
+                            <img src="/close.png" class="closeChangePassImg">
                         </button>
+                    </div>
+                    <input type="password" class="inputChangePassword" placeholder="Digite a sua nova senha">
+                    <button class="saveNewPassword"  (click)="savePassword()">
+                        <p class="savePassword">Salvar</p>
+                    </button>
+                    <div class="senhaSalvaCard" [ngClass]="{'senhaSalvaCard': true, 'senhaSalvaCardActive': isPasswordSaved}">
+                        <p class="senhaSalva">Senha salva!</p>
                     </div>
                 </div>
             </div>

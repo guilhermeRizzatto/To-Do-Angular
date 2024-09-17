@@ -14,20 +14,21 @@
     display: grid;
     grid-template-columns: 250px 1fr;
 
-    background-color: rgb(76, 117, 253);
+    background-color: rgba(76, 117, 253, 0);
     min-height: 100%;
 
 }
 
 #area #board{
-    background-color: brown;
+    background-color: #F6F3FF;
     margin: 10px;
     border-style: solid;
+    border-color: #775EBB;
     border-width: 3px;
 }
 
 #sideBar{
-    background-color: bisque;
+    background-color: rgba(255, 228, 196, 0);
     position: relative;
     display: flex;
     flex-direction: column; /* Garante que o botão fique no fundo */
@@ -40,7 +41,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 200px;
+    height: 385px;
     background-color: rgba(255, 255, 0, 0);
 }
 
@@ -77,34 +78,42 @@
 }
 
 #sideBar .menu .options{
-    height: 100%;
+    height: 0%;
+    background-color: #B49AFF;
+    transition: height 0.25s ease-in-out;
+}
+
+#sideBar .menu .options.activeOptions{
+    height: 135px;
     background-color: #B49AFF;
 }
 
-#sideBar .menu .options .changePassCard{
+.changePassCard{
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    margin-top: 145px;
+    position: relative;
+    margin-top: 20px;
     width: 100%;
-    height: 145px;
-    background-color: #292929;
+    height: 165px;
+    background-color: #B49AFF;
+
+    
+
 
     .titleChangePassCard{
-        position: absolute;
         display: flex;
+        position: absolute;
         text-align: center;
         justify-content: center;
         align-items: center;
         padding: 0;
-        margin-top: 0px;
-        margin-bottom: 170px;
+        top: 0;
         height: 50px;
         width: 100%;
-        background-color: #B49AFF;
+        background-color: #8B6EDD;
 
         .textChangePassCard{
             margin: 0px;
@@ -113,7 +122,7 @@
             -webkit-font-smoothing: antialiased;
             font-weight: 500;
             font-style: normal;
-            font-size: 16.5px;
+            font-size: 17.5px;
             color: #FFFFFF;
         }
 
@@ -149,94 +158,191 @@
         position: relative;
         background-color: #987DE8;
         border: none;
-        height: 50px;
+        height: 40px;
         width: 100%;
         box-sizing: border-box;
         overflow: auto;
         outline: none;
-        margin-top: 20px;
-        font-family: "Instrument Sans", system-ui;
+        margin-top:13px;
+        font-family: "Instrument Sans";
         font-optical-sizing: auto;
         -webkit-font-smoothing: antialiased;
         font-weight: 500;
         font-style: normal;
-        font-size: 21px;
-        color: #FFFFFF;
-    }
+        font-size: 18px;
+        color: #ffffff;
 
-    .inputChangePassword:focus{
-        position: relative;
-        background-color: #987DE8;
-        border: solid 3px #775EBB;
-        height: 50px;
-        width: 100%;
+        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out ;
     }
 
     .inputChangePassword::placeholder{
         text-align: center;
         font-size: 15px;
         color: rgba(255, 255, 255, 0.342);
+
+        transition: color 0.25s ease-in-out ;
     }
+
+    .inputChangePassword:focus{
+        position: relative;
+        color: #292929;
+        background-color: #F6F3FF;
+        height: 40px;
+        width: 100%;
+    }
+
+    .inputChangePassword:focus::placeholder{
+        text-align: center;
+        font-size: 15px;
+        color: #775ebb9e;
+    }
+
 
     .saveNewPassword{
         cursor: pointer;
-        position: relative;
+        position: absolute;
         display: flex;
         text-align: center;
         justify-content: center;
         align-items: center;
-        display: flex;
-        margin-top: 20px;
-        width: 80%;
+        bottom: 0;
+        margin-bottom: 13px;
+        width: 90%;
         height: 30px;
         border: none;
-        background-color: #C0FF6F;
+        background-color: #292929;
+
+        transition: background-color 0.25s ease-in-out;
 
         .savePassword{
             margin: 0px;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
             -webkit-font-smoothing: antialiased;
-            font-weight: 600;
+            font-weight: 500;
             font-style: normal;
             font-size: 16.5px;
-            color: #272727;
+            color: #C0FF6F;
+
+            transition: color 0.25s ease-in-out;
         }
 
     }
 
     .saveNewPassword:hover{
-        background-color: #ffffff;
+        background-color: #C0FF6F;
         .savePassword{
-            color: #65B500;
+            color: #272727;
         }
     }
+
+    .senhaSalvaCard{
+        bottom: 0;
+        position: absolute;
+        height: 0px;
+        width: 100%;
+        overflow: hidden;
+
+        transition: height 0.20s ease-in-out;
+
+        .senhaSalva{
+            margin: 0px;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 18.5px;
+            color: #272727;
+        }
+    }
+    
+    .senhaSalvaCardActive{
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-color: #C0FF6F;
+        height: 115px;
+        width: 100%;
+    }
+
 }
+
+
+
 
 #sideBar .addButton{
     cursor: pointer;
     position: relative;
-    bottom: 0;
     background-color: #775EBB;
-    height: 120px;
-    width: 90px;
+    margin-bottom: 20px;
+    height: 60px;
+    width: 60px;
     align-content: center;
     border-style: none;
     justify-content: center;
 
     .addIcon{
-        height: 64px;
-        width: 64px;
-        margin-bottom: 25px;
+        height: 44px;
+        width: 44px;
+        margin-bottom: 0px;
+
+        transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
     }
+    
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
 }
 
 #sideBar .addButton:hover{
+    height: 80px;
+    width: 80px;
     background-color: #B49AFF;
+
+    .addIcon{
+        height: 66px;
+        width: 66px;
+        margin-bottom: 0px;
+    }
 }
 
 
 .menu .changePass{
+    overflow: hidden;
+    opacity: 0;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #775EBB;
+    height: 0px;
+    width: 100%;
+    border: 0px none;
+
+    .passText{
+        margin: 0px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 16.5px;
+        color: #FFFFFF;
+    }
+
+    transition: opacity 0.25s ease-in-out, height 0.15s ease-in-out;
+
+}
+
+.menu .changePass.activeChangePass{
+    opacity: 1;
+    position: relative;
     box-sizing: border-box;
     padding: 0px;
     justify-content: center;
@@ -262,16 +368,17 @@
 
 }
 
+
 .menu .changePass:hover{
     justify-content: center;
-    box-sizing: border-box;
     height: 40px;
     width: 100%;
     padding: 0px;
     text-align: center;
-    border: 2px solid;
+    background-color: #F6F3FF;
     
     .passText{
+        color: #775EBB;
         margin: 0px;
         font-family: "Instrument Sans", system-ui;
         font-optical-sizing: auto;
@@ -290,8 +397,8 @@
     align-content: center;
     justify-content: center;
     margin-left: 200px;
-    position: relative;
-    margin-bottom: 10px;
+    position: absolute;
+    top: 25px;
     align-self: end;
     cursor: pointer;
     height: 25px;
@@ -299,6 +406,7 @@
     border-radius: 0px;
     border-style: none;
     background-color: rgba(255, 255, 255, 0);
+    transition: rotate 0.45s ease-in-out, top 0.15s ease-in-out;
 
 }
 
@@ -310,7 +418,6 @@
 .menu .topBar .expandOptions .arrowDown.active{
     height: 32px;
     width: 32px;
-    rotate: 90deg;
 }
 
 .menu .topBar .expandOptions.active{
@@ -318,7 +425,6 @@
     align-content: center;
     justify-content: center;
     position: absolute;
-    margin-bottom: 0px;
     top: 170px;
     align-self: end;
     height: 25px;
@@ -326,5 +432,5 @@
     border-radius: 0px;
     border-style: none;
     background-color: rgba(247, 39, 39, 0);
-    rotate: 180deg;
+    rotate: 540deg;
 }
