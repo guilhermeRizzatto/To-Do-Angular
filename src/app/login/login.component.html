@@ -29,19 +29,19 @@
             <div class="nameCreateIndicator">
                 <p>Nome</p>
             </div>
-            <input class="inputName">
+            <input [(ngModel)]="user.name" class="inputName">
         </div>
         <div class="emailEnterCardDisable"  [ngClass]="{'emailEnterCardDisable': true, 'emailEnterCardActive': enterAccountActive, 'emailCreateCardActive': createAccountActive}">
             <div class="emailEnterIndicator">
                 <p>Email</p>
             </div>
-            <input class="inputEmail">
+            <input [(ngModel)]="user.email" class="inputEmail">
         </div>
         <div class="passEnterCardDisable"  [ngClass]="{'passEnterCardDisable': true, 'passEnterCardActive': enterAccountActive, 'passCreateCardActive':createAccountActive}">
             <div class="passIndicator">
                 <p>Senha</p>
             </div>
-            <input class="inputPass" type="password">
+            <input [(ngModel)]="user.password" class="inputPass" type="password">
         </div>
         
         <div class="buttonsDisable" [ngClass]="{'buttonsDisable': true, 'buttonsActive': displayComebackButton}">
@@ -51,7 +51,7 @@
             <button class="enterButtonDisable" (click)="toggleError()" [ngClass]="{'enterButtonDisable': true, 'enterButtonActive': enterAccountActive}">
                 Entrar ->
             </button>
-            <button class="createButtonDisable" (click)="toggleError()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
+            <button class="createButtonDisable" (click)="post()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
                 Criar conta ->
             </button>
 

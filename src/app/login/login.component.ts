@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user';
+
 
 @Component({
   selector: 'app-login',
@@ -20,7 +23,9 @@ export class LoginComponent {
 
   enterSucess:boolean = false;
 
-  constructor(private router: Router) {}
+  user:User = new User();
+
+  constructor(private router: Router, private service:UserService) {}
 
 
   comeback():void{
@@ -31,6 +36,10 @@ export class LoginComponent {
     this.errorEmail = false;
     this.errorPass = false;
     this.clickCount = 0;
+
+    this.user.email = '';
+    this.user.password = '';
+    this.user.name = '';
   }
 
   toggleEnterAccount():void{
@@ -70,6 +79,10 @@ export class LoginComponent {
 
       this.router.navigate(['/main']);
     }
+  }
+
+  post():void{
+    this.service.post(this.user).subscribe(content => this.user = content);
   }
 
   private async sleep(): Promise<void> {
