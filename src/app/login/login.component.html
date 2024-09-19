@@ -9,8 +9,11 @@
         <div class="titleCreateAccount" *ngIf="createAccountActive">
             <p class="createText">Crie sua conta.</p>
         </div>
-        <div class="errorEmail" *ngIf="errorEmail"> 
+        <div class="errorEmailNotExists" *ngIf="errorEmailNotExists"> 
             <p class="emailErrorText">Erro: não existe uma conta com esse email.</p>
+        </div>
+        <div class="errorEmailExists" *ngIf="errorEmailExists"> 
+            <p class="emailErrorText">Erro: este email já foi cadastrado.</p>
         </div>
         <div class="errorPassword" *ngIf="errorPass"> 
             <p class="errorPasswordText">Erro: senha errada.</p>

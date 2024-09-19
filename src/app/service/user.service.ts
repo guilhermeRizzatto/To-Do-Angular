@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { User} from '../model/user';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
 
-  post(obj:User):Observable<User>{
+  post(obj:User):Observable<any>{
     return this.http.post<User>(this.url + "/login/create", obj);
   }
 }
