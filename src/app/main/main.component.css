@@ -3,6 +3,8 @@
     background-color: rgb(255, 255, 255);
     height: 100vh;
     width: 100vw;
+    overflow-y: hidden; /* Rolagem apenas vertical */
+    overflow-x: auto;
 }
 
 #area{
@@ -19,12 +21,20 @@
 
 }
 
-#area #board{
+#board{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto; /* Rolagem apenas vertical */
+    overflow-x: hidden; /* Desativa rolagem horizontal */
     background-color: #F6F3FF;
     margin: 10px;
     border-style: solid;
     border-color: #775EBB;
-    border-width: 3px;
+    border-width: 2px;
+
+    max-width: 85vw;
+    max-height: 97.3vh;
 }
 
 #sideBar{
@@ -78,7 +88,7 @@
 }
 
 #sideBar .menu .options{
-    height: 0%;
+    height: 0px;
     background-color: #B49AFF;
     transition: height 0.25s ease-in-out;
 }
@@ -309,9 +319,8 @@
 }
 
 
-.menu .changePass{
+#sideBar .menu .options .changePass{
     overflow: hidden;
-    opacity: 0;
     position: relative;
     box-sizing: border-box;
     padding: 0px;
@@ -319,11 +328,13 @@
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     background-color: #775EBB;
     height: 0px;
     width: 100%;
     border: 0px none;
+    
+    transition: opacity 0.25s ease-in-out, height 0.15s ease-in-out, background-color 0.15s ease-in-out;;
 
     .passText{
         margin: 0px;
@@ -336,12 +347,10 @@
         color: #FFFFFF;
     }
 
-    transition: opacity 0.25s ease-in-out, height 0.15s ease-in-out;
 
 }
 
-.menu .changePass.activeChangePass{
-    opacity: 1;
+#sideBar .menu .options .changePass.activeChangePass{
     position: relative;
     box-sizing: border-box;
     padding: 0px;
@@ -349,12 +358,13 @@
     cursor: pointer;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     background-color: #775EBB;
     height: 40px;
     width: 100%;
     border: 0px none;
 
+
     .passText{
         margin: 0px;
         font-family: "Instrument Sans", system-ui;
@@ -364,12 +374,15 @@
         font-style: normal;
         font-size: 16.5px;
         color: #FFFFFF;
+
+        transition: color 0.15s ease-in-out;
     }
+    
 
 }
 
 
-.menu .changePass:hover{
+#sideBar .menu .options .changePass:hover{
     justify-content: center;
     height: 40px;
     width: 100%;
@@ -379,6 +392,91 @@
     
     .passText{
         color: #775EBB;
+        margin: 0px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 16.5px;
+    }
+
+    
+}
+
+.menu .logout{
+    overflow: hidden;
+    opacity: 0;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #775EBB;
+    height: 0px;
+    width: 100%;
+    border: 0px none;
+
+    .logoutText{
+        margin: 0px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 16.5px;
+        color: #FFFFFF;
+    }
+
+    transition: opacity 0.25s ease-in-out, height 0.15s ease-in-out, background-color 0.15s ease-in-out;
+
+}
+
+.menu .logout.activelogout{
+    opacity: 1;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0px;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    background-color: #775EBB;
+    height: 40px;
+    width: 100%;
+    border: 0px none;
+
+
+    .logoutText{
+        margin: 0px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 16.5px;
+        color: #FFFFFF;
+
+        transition: color 0.15s ease-in-out;
+    }
+
+}
+
+
+.menu .logout:hover{
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+    background-color: #F6F3FF;
+    
+    .logoutText{ 
+        color: #FF5050;
         margin: 0px;
         font-family: "Instrument Sans", system-ui;
         font-optical-sizing: auto;
@@ -434,3 +532,557 @@
     background-color: rgba(247, 39, 39, 0);
     rotate: 540deg;
 }
+
+.card{
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #292929;
+    width: 300px;
+    height: 420px;
+
+    transition: height 0.25s ease-in-out;
+
+    .cardTitle{
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #8c72d8;
+        width: 100%;
+        height: 60px;
+
+        transition: height 0.25s ease-in-out;
+
+        ::-webkit-scrollbar{
+            background-color: #ffffff00;
+            width: 7px;
+
+        }
+        
+        ::-webkit-scrollbar-thumb{
+            background-color: rgba(254, 254, 254, 0.634);
+            border-radius: 50px;
+        }
+
+        .title{
+            display: flex;
+            flex-direction: row;
+            background-color: #8c72d8;
+            width: 100%;
+            height: 60px;
+
+            .cardTitleText{
+                width: 85%;
+                height: 60px;
+                background-color: #ffffff00;
+                word-wrap: break-word;
+                overflow-y: auto;
+                overflow-x: hidden;
+                white-space: pre-wrap;
+                
+    
+                p{
+                    margin: 10px;
+                    color: #ffffff;
+                    font-family: "Instrument Sans", system-ui;
+                    font-optical-sizing: auto;
+                    -webkit-font-smoothing: antialiased;
+                    font-weight: 500;
+                    font-style: normal;
+                    font-size: 16.5px;
+                    
+                }
+            }
+    
+            .cardTitleExpandOptions{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                height: 40px;
+                width: 45px;
+                cursor: pointer;
+                background-color: rgba(95, 158, 160, 0);
+                border: none;
+    
+                transition: rotate 0.45s ease-in-out;
+    
+                .arrowDownCard{
+                    height: 28px;
+                    width: 28px;
+                }
+            }
+    
+            .cardTitleExpandOptionsActive{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                width: 45px;
+                background-color: rgba(95, 158, 160, 0);
+                border: none;
+                rotate: 540deg;
+    
+                .arrowDownCard{
+                    height: 28px;
+                    width: 28px;
+                }
+            }
+        }
+        
+
+        
+    }
+
+    .titleDisable{
+        display: none;
+    }
+    
+    .cardTitleExpanded{
+        height: 170px;
+
+        transition: height 0.25s ease-in-out;
+    }
+
+    .cardTitleRemove{
+        height: 0px;
+        width: 0px;
+        overflow: hidden;
+    }
+
+
+    .cardTextArea{
+        word-wrap: break-word;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: 100%;
+        width: 100%;
+        background-color: #c1ff6f00;
+        white-space: pre-wrap;
+
+
+        p{
+            padding-left: 10px;
+            padding-right: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+            
+        }
+
+    }
+
+    .cardTextAreaDisable{
+        height: 0%;
+        overflow: hidden;
+    }
+
+    .cardTextAreaRemove{
+        height: 0%;
+        overflow: hidden;
+    }
+
+    .cardTextArea::-webkit-scrollbar{
+        width: 7px;
+    }
+
+    .cardTextArea::-webkit-scrollbar-thumb{
+        border-radius: 50px;
+        background-color: rgba(254, 254, 254, 0.262);
+         
+     }
+
+
+    .cardTitleDeleteOption{
+            margin-left: 10px;
+            margin-top: 10px;
+            height: 0px;
+            width: 190px;
+            border: none;
+            overflow: hidden;
+            padding: 0;
+    
+            background-color: transparent;
+            color: transparent;
+    
+            font-size: 0px;
+    
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out,height 0.30s ease-in-out;
+    
+    }
+
+    .cardTitleDeleteOptionActive{
+            margin-left: 10px;
+            height: 40px;
+            width: 190px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            background-color:#292929;
+    
+            color: #FF5050;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+    
+    
+    }
+    
+    .cardTitleDeleteOptionActive:hover{
+            background-color:#FF5050;
+            color: #ffffff;
+    }
+    
+    
+    .cardTitleChangeOption{
+            margin-left: 10px;
+            margin-top: 10px;
+            height: 0px;
+            width: 190px;
+            border: none;
+            overflow: hidden;
+            padding: 0;
+    
+            background-color: transparent;
+            color: transparent;
+    
+            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, height 0.30s ease-in-out;
+            font-size: 0px;
+    
+    }
+    
+    .cardTitleChangeOptionActive{
+            margin-left: 10px;
+            height: 40px;
+            width: 190px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            background-color:#292929;
+        
+            color: #F9C200;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+    
+            
+    
+    }
+    
+    .cardTitleChangeOptionActive:hover{
+            background-color: #F9C200;
+            color: #ffffff;
+    }
+}
+
+.cardChanged{
+    width: 300px;
+    height: 492px;
+}
+
+.cardAdded{
+    width: 300px;
+    height: 492px;
+}
+
+
+.cardTitleChange{
+    display: none;
+}
+
+.cardTitleChangeActive{
+    background-color: #F9C200;
+    display: flex;
+    width: 300px;
+    height: 100%;
+    border: 0px solid #F9C200;
+    outline: none;
+    flex-shrink: 0;
+
+    white-space: pre-wrap;
+
+    box-sizing: border-box;
+
+    resize: none;
+    
+    
+    padding: 10px;
+    color: #ffffff;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16.5px;
+    
+    word-wrap: break-word;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    transition: border 0.08s ease-in-out;
+    
+}
+
+.cardTitleChangeActive::placeholder{
+    color: #ffffffab
+}
+
+.cardTitleChangeActive:focus{
+    border: 3px solid #B49AFF;
+}
+
+.newCardTitle{
+    background-color: #ffffff;
+    display: flex;
+    width: 300px;
+    height: 100%;
+    border: 0px solid #F9C200;
+    outline: none;
+    flex-shrink: 0;
+
+    white-space: pre-wrap;
+
+    box-sizing: border-box;
+
+    resize: none;
+    
+    
+    padding: 10px;
+    color: #292929;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16.5px;
+    
+    word-wrap: break-word;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    transition: border 0.08s ease-in-out;
+}
+
+.newCardTitle::placeholder{
+    color: #2929293e;
+}
+
+.newCardTitle:focus{
+    border: 3px solid #B49AFF;
+}
+
+.save{
+    background-color: #3d3d3d;
+    height: 0px;
+    overflow: hidden;
+    padding: 0px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    
+    color: #C0FF6F;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16.5px;
+
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, height 0.25s ease-in-out;
+}
+
+.saveActive{
+    height: 50px;
+}
+
+.save:hover{
+    background-color: #C0FF6F;
+    color: #292929;
+}
+
+.cancel{
+    background-color: #3d3d3d;
+    height: 0px;
+    overflow: hidden;
+    padding: 0px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    
+    color: #FF5050;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16.5px;
+
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, height 0.25s ease-in-out;
+}
+
+.cancelActive{
+    height: 50px;
+}
+
+.cancel:hover{
+    background-color: #FF5050;
+    color: #292929;
+}
+
+.cardTextAreaChange{
+    position: relative;
+    height: 0px;
+    width: 100%;
+    resize: none;
+    border: 0px solid #292929;
+    overflow: hidden;
+    padding: 0px;
+    white-space: pre-wrap;
+    background-color: #292929;
+    z-index: 1;
+
+    color: #FFFFFF;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 15.5px;
+
+    transition: border 0.08s ease-in-out;
+}
+
+.cardTextAreaChangeActive{
+    height: 100%;
+    width: 100%;
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow-y: auto;
+
+}
+
+.cardTextAreaChangeActive:focus{
+    outline: none;
+    border: 3px solid #B49AFF;
+
+}
+
+.cardTextAreaChange::-webkit-scrollbar{
+    width: 7px;
+}
+
+.cardTextAreaChange::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    background-color: rgba(254, 254, 254, 0.262);
+     
+ }
+
+.Saved{
+    display: flex;
+    position: relative;
+    height: 0px;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 9999;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #C0FF6F;
+
+    color: #292929;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18.5px;
+
+    transition: height 0.25s ease-in-out;
+}
+
+.SavedActive{
+    height: 30%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #C0FF6F;
+}
+
+.Canceled{
+    display: flex;
+    position: relative;
+    height: 0px;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 9999;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #FF5050;
+
+    color: #292929;
+    font-family: "Instrument Sans", system-ui;
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 18.5px;
+
+    transition: height 0.25s ease-in-out;
+}
+
+.CanceledActive{
+    height: 30%;
+    width: 100%;
+    overflow: hidden;
+    background-color: #FF5050;
+}
+
+.removedCard{
+    height: 0px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF5050;
+
+    transition: height 0.39s ease-in-out;
+
+    .cruz{
+        height: 0px;
+        width: 0px;
+        transition: height 0.30s ease-in-out, width 0.30s ease-in-out;
+    }
+}
+
+.removedCardActive{
+    position: relative;
+    height: 420px;
+    background-color: #FF5050;
+
+    .cruz{
+        height: 42px;
+        width: 42px;
+    }
+}
+
+

@@ -14,6 +14,9 @@
                     <button class="changePass" (click)="changePassEnable()" [ngClass]="{'changePass': true, 'activeChangePass': options}">
                         <p class="passText">Trocar Senha</p>
                     </button>
+                    <button class="logout" (click)="changeLogout()" [ngClass]="{'logout': true, 'activelogout': options}">
+                        <p class="logoutText">Sair</p>
+                    </button>
                 </div>
                 <div class="changePassCard" *ngIf="changePassShow" [@enableChangePass]>
                     <div class="titleChangePassCard">
@@ -33,10 +36,61 @@
             </div>
         
             <button class="addButton">
-                <img src="/add.png" class="addIcon">
+                <img src="/add.png" class="addIcon" (click)="addNewTask()">
             </button>
         </div>
+
+
+
+
+
+
         <div id="board">
+
+            <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableTitleChange}" *ngFor="let task of tasks; let i = index">
+                <div class="removedCard" [ngClass]="{'removedCard': true, 'removedCardActive': task.isRemoved}">
+                    <img src="/cruz.png" class="cruz" >
+                </div>
+                <div class="cardTitle" [ngClass]="{'cardTitle': true, 'cardTitleExpanded': task.expanded, 'cardTitleRemove': task.isRemoved}">
+                    <textarea class='cardTitleChange' spellcheck="false" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'cardTitleChangeActive':task.enableTitleChange, 'newCardTitle':task.isNew}" placeholder="Adicione um Título"></textarea>
+                    <div class="title" [ngClass]="{'title': !task.titleRemove, 'titleDisable':task.titleRemove}">
+                        <div class="cardTitleText">
+                            <p>{{task.name}}</p>
+                        </div>
+                        <button class="cardTitleExpandOptions" (click)="expandOptionsCard(i)" [ngClass]="{'cardTitleExpandOptions': true, 'cardTitleExpandOptionsActive': task.expanded}">
+                            <img src="/arrowDown512.png" class="arrowDownCard" >
+                        </button>
+                    </div>
+                   
+                    <button class="cardTitleChangeOption" [ngClass]="{'cardTitleChangeOption': true, 'cardTitleChangeOptionActive': task.expanded}" (click)="changeCard(i)">
+                            Alterar
+                    </button>
+                    <button class="cardTitleDeleteOption" [ngClass]="{'cardTitleDeleteOption': true, 'cardTitleDeleteOptionActive': task.expanded}" (click)="removeCard(i)">
+                        Deletar
+                    </button>
+                </div>
+
+                <div class="cardTextArea" [ngClass]="{'cardTextArea': !task.enableDescripChange, 'cardTextAreaDisable': task.enableDescripChange, 'cardTextAreaRemove': task.isRemoved}">
+                    <p>{{task.description}}</p>
+                </div>
+                <textarea class='cardTextAreaChange' spellcheck="false" [(ngModel)]="task.description" [ngClass]="{'cardTextAreaChange': true, 'cardTextAreaChangeActive':task.enableDescripChange}" placeholder="Adicione uma descrição"></textarea>
+
+                <button class="save" (click)="saveCard(i)" [ngClass]="{'save':true, 'saveActive': task.showSaveButton}">
+                    Salvar
+                </button>
+                <button class="cancel" (click)="cancelCard(i)" [ngClass]="{'cancel':true, 'cancelActive': task.showSaveButton}">
+                    Cancelar
+                </button>
+                <div class="Saved" [ngClass]="{'Saved': true, 'SavedActive':task.isCardSaved}">
+                    <p>Salvo com sucesso!</p>
+                </div>
+                <div class="Canceled" [ngClass]="{'Canceled': true, 'CanceledActive':task.isCardCanceled}">
+                    <p>Cancelado :(</p>
+                </div>
+
+            </div>
+
+
         </div>
     </div>
 </div>
