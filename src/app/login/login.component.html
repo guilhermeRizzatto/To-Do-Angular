@@ -18,6 +18,12 @@
         <div class="errorPassword" *ngIf="errorPass"> 
             <p class="errorPasswordText">Erro: senha errada.</p>
         </div>
+        <div class="inputEmpty" *ngIf="inputEmpty"> 
+            <p class="inputEmptyText">Por favor. Preencha todos os campos</p>
+        </div>
+        <div class="emailValid" *ngIf="emailValid"> 
+            <p class="isEmailValidText">Por favor. Utilize um email válido.</p>
+        </div>
         
 
 
@@ -51,16 +57,17 @@
             <button class="backButtonDisable" (click)="comeback()" [ngClass]="{'backButtonDisable': true, 'backButtonActive': displayComebackButton}">
                 <- Voltar
             </button>
-            <button class="enterButtonDisable" (click)="toggleError()" [ngClass]="{'enterButtonDisable': true, 'enterButtonActive': enterAccountActive}">
+            <button class="enterButtonDisable" (click)="enter()" [ngClass]="{'enterButtonDisable': true, 'enterButtonActive': enterAccountActive}">
                 Entrar ->
             </button>
-            <button class="createButtonDisable" (click)="post()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
+            <button class="createButtonDisable" (click)="create()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
                 Criar conta ->
             </button>
 
         </div>
-        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo de volta, (nome)!</div>
 
+        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo, (nome)!</div>
+        <div class="createSucessDisable" [ngClass]="{'createSucessDisable': true, 'createSucessActive': createSucess}">Conta criada com sucesso!</div>
 
 
     </div>
