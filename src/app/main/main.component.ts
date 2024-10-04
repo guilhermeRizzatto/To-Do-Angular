@@ -30,6 +30,14 @@ export class MainComponent{
 
   isPasswordSaved:boolean = false;
 
+  allowToRemove:boolean = true;
+  allowToCancel:boolean = true;
+
+  alerts:boolean = false;
+  alertCancel:boolean = false;
+  alertRemove:boolean = false;
+  alertSave:boolean = false;
+
   task:Task = new Task();
   
   tasks:Task[] = [
@@ -45,10 +53,23 @@ export class MainComponent{
     this.tasks[index].expanded = !this.tasks[index].expanded;
   }
 
-  async removeCard(index:number):Promise<void> {   
+  async removeCard(index:number):Promise<void> {
+    if(this.allowToRemove === false || this.allowToCancel == false){
+      console.log('espere para cancelar');
+      this.alerts = true;
+      this.alertRemove = true;
+      return;
+    }
+    this.allowToRemove = false;
     this.tasks[index].isRemoved = !this.tasks[index].isRemoved;
     await this.sleep(1500);
     this.tasks.splice(index, 1);
+    this.allowToRemove = true;
+    await this.sleep(400);
+    this.alertRemove = false;
+    this.alertSave = false;
+    await this.sleep(200);
+    this.alerts = false;
   }
 
   changeCard(index:number):void {
@@ -63,6 +84,14 @@ export class MainComponent{
   }
 
   async saveCard(index:number):Promise<void> {
+    if(this.allowToCancel === false || this.allowToRemove === false){
+      this.alerts = true
+      this.alertSave = true;
+      return;
+    }
+    this.alertSave = false;
+    await this.sleep(200);
+    this.alerts = false;
     this.tasks[index].showSaveButton = false;
     await this.sleep(200);
     this.tasks[index].isCardSaved = true;
@@ -79,45 +108,37 @@ export class MainComponent{
   }
 
   async cancelCard(index:number):Promise<void> {
-    this.tasks[index].showSaveButton = false;
-    await this.sleep(200);
-    this.tasks[index].isCardCanceled = true;
-    await this.sleep(1500);
-
-    
-    this.tasks[index].isCardCanceled = false;
-
     if(this.tasks[index].isNew === true){
-      let tasksReverse = [...this.tasks];
-
-      tasksReverse.reverse();
-
-      console.log(tasksReverse);
-
-      await this.sleep(3000);
-
-      let indexReversed = 0;
-
-      if(index === 0){
-        indexReversed = this.tasks.length - 1;
-      }else{
-        indexReversed = (this.tasks.length - index) - 1;
+      if(this.allowToCancel === false || this.allowToRemove == false){
+        this.alerts = true;
+        this.alertCancel = true;
+        return;
       }
-      console.log(indexReversed);
+      this.allowToCancel = false;
+      this.tasks[index].showSaveButton = false;
+      await this.sleep(200);
+      this.tasks[index].isCardCanceled = true;
+      await this.sleep(1500);
       
+      this.tasks[index].isCardCanceled = false;
+
+      this.tasks.splice(index, 1);
+      this.allowToCancel = true;
+      await this.sleep(400);
+      this.alertCancel = false;
+      this.alertSave = false;
+      await this.sleep(200);
+      this.alerts = false;
       
-      tasksReverse.splice(indexReversed, 1);
-
-      console.log(tasksReverse);
-
-      //tasksReverse.reverse();
-
-
-
-      
-
-
     } else {
+      
+      this.tasks[index].showSaveButton = false;
+      await this.sleep(200);
+      this.tasks[index].isCardCanceled = true;
+      await this.sleep(1500);
+      
+      this.tasks[index].isCardCanceled = false;
+      console.log('passou aqui');
       this.tasks[index].name = this.tasks[index].oldName;
       this.tasks[index].description = this.tasks[index].oldDescription;
     
@@ -131,8 +152,7 @@ export class MainComponent{
   }
 
   addNewTask():void{
-    this.tasks.unshift(new Task('','',true,true,true,true,true));
-    
+    this.tasks.unshift(new Task('','',true,true,true,true,true));   
   }
 
   showOptions():void{

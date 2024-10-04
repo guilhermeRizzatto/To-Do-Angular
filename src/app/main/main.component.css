@@ -21,6 +21,222 @@
 
 }
 
+
+.alerts{
+    z-index: 99999;
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    display: flex;
+
+    overflow: hidden;
+
+    margin-left: 29vw;
+    margin-top: 30px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.alertsActive{
+    z-index: 99999;
+    position: absolute;
+    height: 170px;
+    width: 800px;
+
+    margin-left: 29vw;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.alertCancel{
+    z-index: 99999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 20px;
+    background-color: #F9C200;
+    box-shadow: 0px 0px 20px 0px #c19700;
+
+    .alertCancelText{
+        opacity: 0;
+        margin: 15px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 19.5px;
+        color: #ffffff00;
+
+        transition: color 0.55s ease-in-out;
+    }
+
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+}
+
+.alertCancelActive{
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 100px;
+    width: 250px;
+    overflow: hidden;
+    background-color: #F9C200;
+    box-shadow: 0px 0px 20px 5px #c19700;
+
+    .alertCancelText{
+        opacity: 1;
+        margin: 15px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 19.5px;
+        color: #FFFFFF;
+    }
+
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+}
+
+.alertRemove{
+    z-index: 99999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 20px;
+    background-color: #e03b3b;
+    box-shadow: 0px 0px 20px 0px #a11f1f;
+
+    .alertRemoveText{
+        opacity: 0;
+        margin: 15px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 19.5px;
+        color: #ffffff00;
+
+        transition: color 0.55s ease-in-out;
+    }
+
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+}
+
+.alertRemoveActive{
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 100px;
+    width: 250px;
+    overflow: hidden;
+    background-color: #e03b3b;
+    box-shadow: 0px 0px 20px 5px #a11f1f;
+
+    .alertRemoveText{
+        opacity: 1;
+        margin: 15px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 19.5px;
+        color: #FFFFFF;
+    }
+
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+
+}
+
+.alertSave{
+    z-index: 99999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #6149a1;
+    box-shadow: 0px 0px 20px 0px #392475;
+
+    .alertSaveText{
+        opacity: 0;
+        margin: 15px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 19.5px;
+        color: #ffffff00;
+
+        transition: color 0.55s ease-in-out;
+    }
+
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+}
+
+.alertSaveActive{
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    word-wrap: normal;
+    height: 100px;
+    width: 250px;
+    overflow: hidden;
+    background-color: #6149a1;
+    box-shadow: 0px 0px 20px 5px #392475;
+
+    .alertSaveText{
+        opacity: 1;
+        margin: 15px;
+        font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 19.5px;
+        color: #ffffff;
+    }
+
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+
+}
+
+
 #board{
     display: flex;
     flex-direction: row;

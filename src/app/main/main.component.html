@@ -1,6 +1,17 @@
 
 <div id="mainFrame">
     <div id="area">
+        <div class="alerts" [ngClass]="{'alerts':true, 'alertsActive':alerts}">
+            <div class="alertCancel" [ngClass]="{'alertCancel':true, 'alertCancelActive':alertCancel}">
+                <p class="alertCancelText">Cancele um por vez, Obrigado.</p>
+            </div>
+            <div class="alertRemove" [ngClass]="{'alertRemove':true, 'alertRemoveActive':alertRemove}">
+                <p class="alertRemoveText">Remova um por vez, Obrigado.</p>
+            </div>
+            <div class="alertSave" [ngClass]="{'alertSave':true, 'alertSaveActive':alertSave}">
+                <p class="alertSaveText">Aguarde todas as operações para adicionar, Obrigado.</p>
+            </div>
+        </div>
         <div id="sideBar">
             <div class="menu">
                 <div class="topBar">
