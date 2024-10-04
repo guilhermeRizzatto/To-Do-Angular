@@ -38,13 +38,13 @@
             <div class="nameCreateIndicator">
                 <p>Nome</p>
             </div>
-            <input [(ngModel)]="user.name" class="inputName">
+            <input [(ngModel)]="user.name" spellcheck="false" class="inputName">
         </div>
         <div class="emailEnterCardDisable"  [ngClass]="{'emailEnterCardDisable': true, 'emailEnterCardActive': enterAccountActive, 'emailCreateCardActive': createAccountActive}">
             <div class="emailEnterIndicator">
                 <p>Email</p>
             </div>
-            <input [(ngModel)]="user.email" class="inputEmail">
+            <input [(ngModel)]="user.email" spellcheck="false" class="inputEmail">
         </div>
         <div class="passEnterCardDisable"  [ngClass]="{'passEnterCardDisable': true, 'passEnterCardActive': enterAccountActive, 'passCreateCardActive':createAccountActive}">
             <div class="passIndicator">
@@ -66,7 +66,7 @@
 
         </div>
 
-        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo, (nome)!</div>
+        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo, {{user.name}}!</div>
         <div class="createSucessDisable" [ngClass]="{'createSucessDisable': true, 'createSucessActive': createSucess}">Conta criada com sucesso!</div>
 
 
