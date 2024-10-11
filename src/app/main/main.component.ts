@@ -45,6 +45,11 @@ export class MainComponent{
     new Task('Guardar 1000 reais todos os meses, até o ano de 2039','Meta: R$45000. Atual: R$12400')
   ];
 
+  tasksCompleted:Task[] = [
+    new Task('Fazer Liçao De matematica','Páginas 301 -> 310,para o dia 31/08'),
+    new Task('Guardar 1000 reais todos os meses, até o ano de 2039','Meta: R$45000. Atual: R$12400')
+  ];
+
 
   constructor(private router: Router) {}
 
@@ -136,6 +141,14 @@ export class MainComponent{
     if(this.tasks[index].done === false){
       this.tasks[index].showUndoText = false;
     }
+  }
+
+  viewCardDone():void{
+   this.tasks.forEach((task, index) => {
+      if(task.done === false){
+        task.isHide = true;
+      }
+   });
   }
 
   addNewTask():void{

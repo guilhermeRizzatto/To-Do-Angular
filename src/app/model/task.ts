@@ -14,6 +14,7 @@ export class Task{
     isCardCanceled:boolean = false;
     isRemoved:boolean = false;
     isNew:boolean = false;
+    isHide:boolean = false;
 
     constructor(name?:string, description?:string, isNew?:boolean, showSaveButton?:boolean, enableSaveNewTask?:boolean){
         this.name = name ?? '';

@@ -49,6 +49,10 @@
             <button class="addButton">
                 <img src="/add.png" class="addIcon" (click)="addNewTask()">
             </button>
+
+            <button (click)="viewCardDone()">
+                ver concluidos
+            </button>
         </div>
 
 
@@ -58,13 +62,13 @@
 
         <div id="board">
 
-            <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableSaveNewTask}" *ngFor="let task of tasks; let i = index">
+            <div class="card" [ngClass]="{'card': !task.done, 'cardChanged': task.enableSaveNewTask, 'cardHide': task.isHide, 'cardDone': task.done}" *ngFor="let task of tasks; let i = index">
                 <div class="removedCard" [ngClass]="{'removedCard': true, 'removedCardActive': task.isRemoved}">
                     <img src="/cruz.png" class="cruz" >
                 </div>
-                <div class="cardTitle" [ngClass]="{'cardTitle': true, 'cardTitleExpanded': task.expanded, 'cardTitleRemove': task.isRemoved}">
+                <div class="cardTitle" [ngClass]="{'cardTitle': !task.done, 'cardTitleExpanded': task.expanded, 'cardTitleRemove': task.isRemoved, 'cardTitleDone': task.done}">
                     <div class="title" [ngClass]="{'title': true}">
-                        <textarea class='cardTitleChange' spellcheck="false" (blur)="teste()" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'newCardTitle':task.isNew}" placeholder="Adicione um Título"></textarea>
+                        <textarea class='cardTitleChange' spellcheck="false" (blur)="teste()" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'newCardTitle':task.isNew, 'cardTitleDoneChange': task.done}" placeholder="Adicione um Título"></textarea>
                        
                         <button class="cardTitleExpandOptions" (click)="expandOptionsCard(i)" [ngClass]="{'cardTitleExpandOptions': true, 'cardTitleExpandOptionsActive': task.expanded, 'cardTitleExpandOptionsHide': task.isNew}">
                             <img src="/arrowDown512.png" class="arrowDownCard" >
@@ -104,6 +108,8 @@
                 </div>
 
             </div>
+
+            
 
 
         </div>
