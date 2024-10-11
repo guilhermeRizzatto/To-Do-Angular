@@ -58,33 +58,37 @@
 
         <div id="board">
 
-            <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableTitleChange}" *ngFor="let task of tasks; let i = index">
+            <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableSaveNewTask}" *ngFor="let task of tasks; let i = index">
                 <div class="removedCard" [ngClass]="{'removedCard': true, 'removedCardActive': task.isRemoved}">
                     <img src="/cruz.png" class="cruz" >
                 </div>
                 <div class="cardTitle" [ngClass]="{'cardTitle': true, 'cardTitleExpanded': task.expanded, 'cardTitleRemove': task.isRemoved}">
-                    <textarea class='cardTitleChange' spellcheck="false" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'cardTitleChangeActive':task.enableTitleChange, 'newCardTitle':task.isNew}" placeholder="Adicione um Título"></textarea>
-                    <div class="title" [ngClass]="{'title': !task.titleRemove, 'titleDisable':task.titleRemove}">
-                        <div class="cardTitleText">
-                            <p>{{task.name}}</p>
-                        </div>
-                        <button class="cardTitleExpandOptions" (click)="expandOptionsCard(i)" [ngClass]="{'cardTitleExpandOptions': true, 'cardTitleExpandOptionsActive': task.expanded}">
+                    <div class="title" [ngClass]="{'title': true}">
+                        <textarea class='cardTitleChange' spellcheck="false" (blur)="teste()" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'newCardTitle':task.isNew}" placeholder="Adicione um Título"></textarea>
+                       
+                        <button class="cardTitleExpandOptions" (click)="expandOptionsCard(i)" [ngClass]="{'cardTitleExpandOptions': true, 'cardTitleExpandOptionsActive': task.expanded, 'cardTitleExpandOptionsHide': task.isNew}">
                             <img src="/arrowDown512.png" class="arrowDownCard" >
                         </button>
                     </div>
                    
-                    <button class="cardTitleChangeOption" [ngClass]="{'cardTitleChangeOption': true, 'cardTitleChangeOptionActive': task.expanded}" (click)="changeCard(i)">
-                            Alterar
-                    </button>
                     <button class="cardTitleDeleteOption" [ngClass]="{'cardTitleDeleteOption': true, 'cardTitleDeleteOptionActive': task.expanded}" (click)="removeCard(i)">
                         Deletar
                     </button>
                 </div>
 
-                <div class="cardTextArea" [ngClass]="{'cardTextArea': !task.enableDescripChange, 'cardTextAreaDisable': task.enableDescripChange, 'cardTextAreaRemove': task.isRemoved}">
-                    <p>{{task.description}}</p>
-                </div>
-                <textarea class='cardTextAreaChange' spellcheck="false" [(ngModel)]="task.description" [ngClass]="{'cardTextAreaChange': true, 'cardTextAreaChangeActive':task.enableDescripChange}" placeholder="Adicione uma descrição"></textarea>
+                
+                <textarea class='cardTextAreaChange' spellcheck="false" [(ngModel)]="task.description" [ngClass]="{'cardTextAreaChange': true, 'cardTextAreaChangeRemove':task.isRemoved}" placeholder="Adicione uma descrição"></textarea>
+
+                <div class="bottomBar" [ngClass]="{'bottomBarHide': task.isNew || task.isRemoved,'bottomBarDefault': !task.done, 'bottomBarDone': task.done, 'bottomBarUndo': task.showUndoText}" >
+                    <button class="completeButton" (click)="doneCard(i)" (mouseenter)="showUndoText(i)" (mouseleave)="hideUndoText(i)">
+                        <img src="/check.png" [ngClass]="{'checkDisableShow':true, 'checkDisableHide':task.done}"/>
+                        <img src="/check-2.png" [ngClass]="{'checkActiveHide':true, 'checkActiveShow':task.done}"/>
+                    </button>
+                    <p [ngClass]="{'doneAskShow': !task.done, 'doneAskHide': task.done}">Concluir tarefa</p>
+                    <p [ngClass]="{'doneCongratsHide': !task.done || task.showUndoText, 'doneCongratsShow': task.done && !task.showUndoText}" >Tarefa Concluida. Parabéns!</p>
+                    <p [ngClass]="{'undoHide': !task.showUndoText, 'undoShow': task.showUndoText}" >Desfazer</p>
+                </div>    
+
 
                 <button class="save" (click)="saveCard(i)" [ngClass]="{'save':true, 'saveActive': task.showSaveButton}">
                     Salvar

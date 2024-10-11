@@ -72,16 +72,6 @@ export class MainComponent{
     this.alerts = false;
   }
 
-  changeCard(index:number):void {
-    this.tasks[index].oldName = this.tasks[index].name;
-    this.tasks[index].oldDescription = this.tasks[index].description;
-
-    this.tasks[index].enableTitleChange = !this.tasks[index].enableTitleChange;
-    this.tasks[index].enableDescripChange = !this.tasks[index].enableDescripChange;
-    this.tasks[index].titleRemove = !this.tasks[index].titleRemove;
-    this.tasks[index].showSaveButton = !this.tasks[index].showSaveButton;
-    this.tasks[index].expanded = !this.tasks[index].expanded;
-  }
 
   async saveCard(index:number):Promise<void> {
     if(this.allowToCancel === false || this.allowToRemove === false){
@@ -102,9 +92,7 @@ export class MainComponent{
     }
 
     this.tasks[index].isCardSaved = false;
-    this.tasks[index].enableTitleChange = false;
-    this.tasks[index].enableDescripChange = false;
-    this.tasks[index].titleRemove = false;
+    this.tasks[index].enableSaveNewTask = false;
   }
 
   async cancelCard(index:number):Promise<void> {
@@ -138,21 +126,32 @@ export class MainComponent{
       await this.sleep(1500);
       
       this.tasks[index].isCardCanceled = false;
-      console.log('passou aqui');
-      this.tasks[index].name = this.tasks[index].oldName;
-      this.tasks[index].description = this.tasks[index].oldDescription;
     
-      this.tasks[index].oldName = '';
-      this.tasks[index].oldDescription = '';
-    
-      this.tasks[index].enableTitleChange = false;
-      this.tasks[index].enableDescripChange = false;
-      this.tasks[index].titleRemove = false;
+      this.tasks[index].enableSaveNewTask = false;
+    }
+  }
+
+  doneCard(index:number):void{
+    this.tasks[index].done = !this.tasks[index].done;
+    if(this.tasks[index].done === false){
+      this.tasks[index].showUndoText = false;
     }
   }
 
   addNewTask():void{
-    this.tasks.unshift(new Task('','',true,true,true,true,true));   
+    this.tasks.unshift(new Task('','',true,true,true));   
+  }
+
+  showUndoText(index:number):void{
+    if(this.tasks[index].done){
+      this.tasks[index].showUndoText = true;
+    }
+  }
+
+  hideUndoText(index:number):void{
+    if(this.tasks[index].done){
+      this.tasks[index].showUndoText = false;
+    }
   }
 
   showOptions():void{
@@ -187,6 +186,10 @@ export class MainComponent{
 
   private async sleep(timeMs:number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, timeMs));
+  }
+
+  teste():void{
+    console.log("cricou");
   }
 
 

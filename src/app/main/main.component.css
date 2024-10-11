@@ -789,29 +789,6 @@
             background-color: #8c72d8;
             width: 100%;
             height: 60px;
-
-            .cardTitleText{
-                width: 85%;
-                height: 60px;
-                background-color: #ffffff00;
-                word-wrap: break-word;
-                overflow-y: auto;
-                overflow-x: hidden;
-                white-space: pre-wrap;
-                
-    
-                p{
-                    margin: 10px;
-                    color: #ffffff;
-                    font-family: "Instrument Sans", system-ui;
-                    font-optical-sizing: auto;
-                    -webkit-font-smoothing: antialiased;
-                    font-weight: 500;
-                    font-style: normal;
-                    font-size: 16.5px;
-                    
-                }
-            }
     
             .cardTitleExpandOptions{
                 display: flex;
@@ -847,18 +824,33 @@
                     width: 28px;
                 }
             }
+
+            .cardTitleExpandOptionsHide{
+                display: none;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                width: 45px;
+                background-color: rgba(95, 158, 160, 0);
+                border: none;
+                rotate: 540deg;
+    
+                .arrowDownCard{
+                    display: none;
+                    height: 28px;
+                    width: 28px;
+                }
+            }
         }
         
 
         
     }
 
-    .titleDisable{
-        display: none;
-    }
+    
     
     .cardTitleExpanded{
-        height: 170px;
+        height: 130px;
 
         transition: height 0.25s ease-in-out;
     }
@@ -915,14 +907,457 @@
         border-radius: 50px;
         background-color: rgba(254, 254, 254, 0.262);
          
-     }
+    }
+
+    .bottomBarDefault{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        height: 41px;
+        width: 100%;
+        background-color: #775EBB;
+        flex-shrink: 0;
+
+        .completeButton{
+            display: grid;
+            grid-area: 1 / 1;
+            border: none;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: pointer;
+            background-color: #FFFFFF;
+
+            height: 25px;
+            width: 25px;
+            margin: 8px;
+
+            .checkDisableShow{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 1;
+                height: 18px;
+                width: 18px;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            .checkDisableHide{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 0;
+                height: 18px;
+                width: 18px;
+            }
+
+            .checkActiveHide{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 0;
+                height: 18px;
+                width: 18px;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            .checkActiveShow{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 1;
+                height: 18px;
+                width: 18px;
+            }
+        }
+
+        .completeButton:hover{
+            background-color: #ece6fd;
+        }
+
+    
+        .doneAskShow{
+            
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneAskHide{
+            
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+        }
+
+        .doneCongratsHide{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneCongratsShow{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .undoHide{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .undoShow{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        transition: font-size 0.25s ease-in-out;
+    }
+
+    .bottomBarDone{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        height: 41px;
+        width: 100%;
+        background-color: #C0FF6F;
+        flex-shrink: 0;
+
+        .completeButton{
+            display: grid;
+            grid-area: 1 / 1;
+            border: none;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: pointer;
+            background-color: #FFFFFF;
+
+            height: 25px;
+            width: 25px;
+            margin: 8px;
+
+            .checkDisableShow{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 1;
+                height: 18px;
+                width: 18px;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            .checkDisableHide{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 0;
+                height: 18px;
+                width: 18px;
+            }
+
+            .checkActiveHide{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 0;
+                height: 18px;
+                width: 18px;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            .checkActiveShow{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 1;
+                height: 18px;
+                width: 18px;
+            }
+        }
+
+        .completeButton:hover{
+            background-color: #ece6fd;
+        }
+
+    
+        .doneAskShow{
+            
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneAskHide{
+            
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneCongratsHide{
+            color: #292929;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneCongratsShow{
+            color: #292929;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .undoHide{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .undoShow{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        transition: background-color 0.25s ease-in-out;
+    }
+
+    .bottomBarUndo{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        height: 41px;
+        width: 100%;
+        background-color: #FF5050;
+        flex-shrink: 0;
+
+        .completeButton{
+            display: grid;
+            grid-area: 1 / 1;
+            border: none;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: pointer;
+            background-color: #FFFFFF;
+
+            height: 25px;
+            width: 25px;
+            margin: 8px;
+
+            .checkDisableShow{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 1;
+                height: 18px;
+                width: 18px;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            .checkDisableHide{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 0;
+                height: 18px;
+                width: 18px;
+            }
+
+            .checkActiveHide{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 0;
+                height: 18px;
+                width: 18px;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            .checkActiveShow{
+                justify-self: center;
+                align-self: center;
+                grid-area: 1 / 1;
+                opacity: 1;
+                height: 18px;
+                width: 18px;
+            }
+        }
+
+        .completeButton:hover{
+            background-color: #ece6fd;
+        }
+
+    
+        .doneAskShow{
+            
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneAskHide{
+            
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneCongratsHide{
+            color: #292929;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .doneCongratsShow{
+            color: #292929;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .undoHide{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 0.0px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        .undoShow{
+            color: #ffffff;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 15.5px;
+
+            transition: font-size 0.25s ease-in-out;
+        }
+
+        transition: background-color 0.25s ease-in-out;
+    }
+
+    .bottomBarHide{
+        display: none;
+    }
+
 
 
     .cardTitleDeleteOption{
             margin-left: 10px;
-            margin-top: 10px;
+            margin-right: 10px;
+            margin-top: 20px;
+            margin-bottom: 10px;
             height: 0px;
-            width: 190px;
+            width: 280px;
             border: none;
             overflow: hidden;
             padding: 0;
@@ -938,8 +1373,9 @@
 
     .cardTitleDeleteOptionActive{
             margin-left: 10px;
+            margin-right: 10px;
             height: 40px;
-            width: 190px;
+            width: 280px;
             border: none;
             cursor: pointer;
             text-align: center;
@@ -962,48 +1398,6 @@
     }
     
     
-    .cardTitleChangeOption{
-            margin-left: 10px;
-            margin-top: 10px;
-            height: 0px;
-            width: 190px;
-            border: none;
-            overflow: hidden;
-            padding: 0;
-    
-            background-color: transparent;
-            color: transparent;
-    
-            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, height 0.30s ease-in-out;
-            font-size: 0px;
-    
-    }
-    
-    .cardTitleChangeOptionActive{
-            margin-left: 10px;
-            height: 40px;
-            width: 190px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            background-color:#292929;
-        
-            color: #F9C200;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-    
-            
-    
-    }
-    
-    .cardTitleChangeOptionActive:hover{
-            background-color: #F9C200;
-            color: #ffffff;
-    }
 }
 
 .cardChanged{
@@ -1018,15 +1412,11 @@
 
 
 .cardTitleChange{
-    display: none;
-}
-
-.cardTitleChangeActive{
-    background-color: #F9C200;
+    background-color: #8c72d8;
     display: flex;
-    width: 300px;
+    width: 85%;
     height: 100%;
-    border: 0px solid #F9C200;
+    border: 0px solid #8c72d8;
     outline: none;
     flex-shrink: 0;
 
@@ -1051,14 +1441,13 @@
     overflow-x: hidden;
 
     transition: border 0.08s ease-in-out;
-    
 }
 
-.cardTitleChangeActive::placeholder{
+.cardTitleChange::placeholder{
     color: #ffffffab
 }
 
-.cardTitleChangeActive:focus{
+.cardTitleChange:focus{
     border: 3px solid #B49AFF;
 }
 
@@ -1161,13 +1550,15 @@
 }
 
 .cardTextAreaChange{
+    box-sizing: border-box;
+    overflow-y: auto;
     position: relative;
-    height: 0px;
+    height: 100%;
     width: 100%;
     resize: none;
     border: 0px solid #292929;
     overflow: hidden;
-    padding: 0px;
+    padding: 10px;
     white-space: pre-wrap;
     background-color: #292929;
     z-index: 1;
@@ -1183,17 +1574,12 @@
     transition: border 0.08s ease-in-out;
 }
 
-.cardTextAreaChangeActive{
-    height: 100%;
-    width: 100%;
-    resize: none;
-    box-sizing: border-box;
-    padding: 10px;
-    overflow-y: auto;
+.cardTextAreaChangeRemove{
+    display: none;
 
 }
 
-.cardTextAreaChangeActive:focus{
+.cardTextAreaChange:focus{
     outline: none;
     border: 3px solid #B49AFF;
 
