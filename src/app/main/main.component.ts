@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from '../model/task';
+import { TaskService } from '../service/task.service';
 
 
 @Component({
@@ -49,7 +50,7 @@ export class MainComponent{
 
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private service:TaskService) {}
 
 
   expandOptionsCard(index:number):void {   
@@ -87,15 +88,22 @@ export class MainComponent{
     this.alerts = false;
     this.tasks[index].showSaveButton = false;
     await this.sleep(200);
-    this.tasks[index].isCardSaved = true;
-    await this.sleep(1500);
+    this.service.post(this.tasks[index]).subscribe({
+      next: async(response) => {
+        this.tasks[index].isCardSaved = true;
+        await this.sleep(1500);
 
-    if(this.tasks[index].isNew === true){
-      this.tasks[index].isNew = false;
-    }
-
-    this.tasks[index].isCardSaved = false;
-    this.tasks[index].enableSaveNewTask = false;
+        if(this.tasks[index].isNew === true){
+          this.tasks[index].isNew = false;
+        }
+    
+        this.tasks[index].isCardSaved = false;
+        this.tasks[index].enableSaveNewTask = false;
+      },
+      error: async (error) => {
+          console.log(error);
+      }    
+    });
   }
 
   async cancelCard(index:number):Promise<void> {
