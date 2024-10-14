@@ -13,6 +13,7 @@ export class Task{
     isCardSaved:boolean = false;
     isCardCanceled:boolean = false;
     isRemoved:boolean = false;
+    allowToUndo:boolean = true;
     isNew:boolean = false;
     isHide:boolean = false;
 

@@ -534,6 +534,88 @@
     }
 }
 
+.toggleView{
+    display: grid;
+    grid-area: 1/1;
+    width: 100%;
+}
+
+.showTasksDone{
+    height: 40px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+
+    background-color: #8B6EDD;
+
+    font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 16.5px;
+        color: #ffffff;
+
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+
+}
+
+.showTasksDone:hover{
+    background-color: #F7F4FF;
+    color: #8B6EDD;
+
+}
+
+.showTasksDoneHide{
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+
+    font-size: 0.0px;
+    color: #ffffff;
+    background-color: #8B6EDD;
+}
+
+.showTasksUndone{
+    height: 40px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+
+    background-color: #8B6EDD;
+
+    font-family: "Instrument Sans", system-ui;
+        font-optical-sizing: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 16.5px;
+        color: #ffffff;
+
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+
+}
+
+.showTasksUndone:hover{
+    background-color: #F7F4FF;
+    color: #8B6EDD;
+
+}
+
+.showTasksUndoneHide{
+    height: 0px;
+    width: 0px;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+
+    font-size: 0.0px;
+    color: #ffffff;
+    background-color: #8B6EDD;
+}
+
 
 #sideBar .menu .options .changePass{
     overflow: hidden;
@@ -550,7 +632,7 @@
     width: 100%;
     border: 0px none;
     
-    transition: opacity 0.25s ease-in-out, height 0.15s ease-in-out, background-color 0.15s ease-in-out;;
+    transition: opacity 0.25s ease-in-out, height 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
     .passText{
         margin: 0px;
@@ -846,6 +928,92 @@
 
         
     }
+
+    .cardTitleDone{
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: #383838;
+        width: 100%;
+        height: 60px;
+
+        transition: height 0.25s ease-in-out;
+
+        ::-webkit-scrollbar{
+            background-color: #ffffff00;
+            width: 7px;
+
+        }
+        
+        ::-webkit-scrollbar-thumb{
+            background-color: rgba(254, 254, 254, 0.634);
+            border-radius: 50px;
+        }
+
+        .title{
+            display: flex;
+            flex-direction: row;
+            background-color: #383838;
+            width: 100%;
+            height: 60px;
+    
+            .cardTitleExpandOptions{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                height: 40px;
+                width: 45px;
+                cursor: pointer;
+                background-color: rgba(95, 158, 160, 0);
+                border: none;
+    
+                transition: rotate 0.45s ease-in-out;
+    
+                .arrowDownCard{
+                    height: 28px;
+                    width: 28px;
+                }
+            }
+    
+            .cardTitleExpandOptionsActive{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                width: 45px;
+                background-color: rgba(95, 158, 160, 0);
+                border: none;
+                rotate: 540deg;
+    
+                .arrowDownCard{
+                    height: 28px;
+                    width: 28px;
+                }
+            }
+
+            .cardTitleExpandOptionsHide{
+                display: none;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                width: 45px;
+                background-color: rgba(95, 158, 160, 0);
+                border: none;
+                rotate: 540deg;
+    
+                .arrowDownCard{
+                    display: none;
+                    height: 28px;
+                    width: 28px;
+                }
+            }
+        }
+        
+
+        
+    }
+
 
     
     
@@ -1408,658 +1576,6 @@
 .cardAdded{
     width: 300px;
     height: 492px;
-}
-
-.cardHide{
-    display: none;
-}
-
-.cardDone{
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 20px;
-    background-color: #292929;
-    width: 300px;
-    height: 420px;
-
-    transition: height 0.25s ease-in-out;
-
-    .cardTitleDone{
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        background-color: #383838;
-        width: 100%;
-        height: 60px;
-
-        transition: height 0.25s ease-in-out;
-
-        ::-webkit-scrollbar{
-            background-color: #ffffff00;
-            width: 7px;
-
-        }
-        
-        ::-webkit-scrollbar-thumb{
-            background-color: rgba(254, 254, 254, 0.634);
-            border-radius: 50px;
-        }
-
-        .title{
-            display: flex;
-            flex-direction: row;
-            background-color: #383838;
-            width: 100%;
-            height: 60px;
-    
-            .cardTitleExpandOptions{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-top: 10px;
-                height: 40px;
-                width: 45px;
-                cursor: pointer;
-                background-color: rgba(95, 158, 160, 0);
-                border: none;
-    
-                transition: rotate 0.45s ease-in-out;
-    
-                .arrowDownCard{
-                    height: 28px;
-                    width: 28px;
-                }
-            }
-    
-            .cardTitleExpandOptionsActive{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 40px;
-                width: 45px;
-                background-color: rgba(95, 158, 160, 0);
-                border: none;
-                rotate: 540deg;
-    
-                .arrowDownCard{
-                    height: 28px;
-                    width: 28px;
-                }
-            }
-
-            .cardTitleExpandOptionsHide{
-                display: none;
-                justify-content: center;
-                align-items: center;
-                height: 40px;
-                width: 45px;
-                background-color: rgba(95, 158, 160, 0);
-                border: none;
-                rotate: 540deg;
-    
-                .arrowDownCard{
-                    display: none;
-                    height: 28px;
-                    width: 28px;
-                }
-            }
-        } 
-    }
-
-    
-    
-    .cardTitleExpanded{
-        height: 130px;
-
-        transition: height 0.25s ease-in-out;
-    }
-
-    .cardTitleRemove{
-        height: 0px;
-        width: 0px;
-        overflow: hidden;
-    }
-
-
-    .cardTextArea{
-        word-wrap: break-word;
-        overflow-y: auto;
-        overflow-x: hidden;
-        height: 100%;
-        width: 100%;
-        background-color: #c1ff6f00;
-        white-space: pre-wrap;
-
-
-        p{
-            padding-left: 10px;
-            padding-right: 5px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-            
-        }
-
-    }
-
-    .cardTextAreaDisable{
-        height: 0%;
-        overflow: hidden;
-    }
-
-    .cardTextAreaRemove{
-        height: 0%;
-        overflow: hidden;
-    }
-
-    .cardTextArea::-webkit-scrollbar{
-        width: 7px;
-    }
-
-    .cardTextArea::-webkit-scrollbar-thumb{
-        border-radius: 50px;
-        background-color: rgba(254, 254, 254, 0.262);
-         
-    }
-
-    .bottomBarDefault{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        height: 41px;
-        width: 100%;
-        background-color: #775EBB;
-        flex-shrink: 0;
-
-        .completeButton{
-            display: grid;
-            grid-area: 1 / 1;
-            border: none;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: pointer;
-            background-color: #FFFFFF;
-
-            height: 25px;
-            width: 25px;
-            margin: 8px;
-
-            .checkDisableShow{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 1;
-                height: 18px;
-                width: 18px;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            .checkDisableHide{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 0;
-                height: 18px;
-                width: 18px;
-            }
-
-            .checkActiveHide{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 0;
-                height: 18px;
-                width: 18px;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            .checkActiveShow{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 1;
-                height: 18px;
-                width: 18px;
-            }
-        }
-
-        .completeButton:hover{
-            background-color: #ece6fd;
-        }
-
-    
-        .doneAskShow{
-            
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneAskHide{
-            
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-        }
-
-        .doneCongratsHide{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneCongratsShow{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .undoHide{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .undoShow{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        transition: font-size 0.25s ease-in-out;
-    }
-
-    .bottomBarDone{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        height: 41px;
-        width: 100%;
-        background-color: #C0FF6F;
-        flex-shrink: 0;
-
-        .completeButton{
-            display: grid;
-            grid-area: 1 / 1;
-            border: none;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: pointer;
-            background-color: #FFFFFF;
-
-            height: 25px;
-            width: 25px;
-            margin: 8px;
-
-            .checkDisableShow{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 1;
-                height: 18px;
-                width: 18px;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            .checkDisableHide{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 0;
-                height: 18px;
-                width: 18px;
-            }
-
-            .checkActiveHide{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 0;
-                height: 18px;
-                width: 18px;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            .checkActiveShow{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 1;
-                height: 18px;
-                width: 18px;
-            }
-        }
-
-        .completeButton:hover{
-            background-color: #ece6fd;
-        }
-
-    
-        .doneAskShow{
-            
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneAskHide{
-            
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneCongratsHide{
-            color: #292929;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneCongratsShow{
-            color: #292929;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .undoHide{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .undoShow{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        transition: background-color 0.25s ease-in-out;
-    }
-
-    .bottomBarUndo{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        align-items: center;
-        height: 41px;
-        width: 100%;
-        background-color: #FF5050;
-        flex-shrink: 0;
-
-        .completeButton{
-            display: grid;
-            grid-area: 1 / 1;
-            border: none;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: pointer;
-            background-color: #FFFFFF;
-
-            height: 25px;
-            width: 25px;
-            margin: 8px;
-
-            .checkDisableShow{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 1;
-                height: 18px;
-                width: 18px;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            .checkDisableHide{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 0;
-                height: 18px;
-                width: 18px;
-            }
-
-            .checkActiveHide{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 0;
-                height: 18px;
-                width: 18px;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            .checkActiveShow{
-                justify-self: center;
-                align-self: center;
-                grid-area: 1 / 1;
-                opacity: 1;
-                height: 18px;
-                width: 18px;
-            }
-        }
-
-        .completeButton:hover{
-            background-color: #ece6fd;
-        }
-
-    
-        .doneAskShow{
-            
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneAskHide{
-            
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneCongratsHide{
-            color: #292929;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .doneCongratsShow{
-            color: #292929;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .undoHide{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 0.0px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        .undoShow{
-            color: #ffffff;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-
-            transition: font-size 0.25s ease-in-out;
-        }
-
-        transition: background-color 0.25s ease-in-out;
-    }
-
-    .bottomBarHide{
-        display: none;
-    }
-
-
-
-    .cardTitleDeleteOption{
-            margin-left: 10px;
-            margin-right: 10px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            height: 0px;
-            width: 280px;
-            border: none;
-            overflow: hidden;
-            padding: 0;
-    
-            background-color: transparent;
-            color: transparent;
-    
-            font-size: 0px;
-    
-            transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out,height 0.30s ease-in-out;
-    
-    }
-
-    .cardTitleDeleteOptionActive{
-            margin-left: 10px;
-            margin-right: 10px;
-            height: 40px;
-            width: 280px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            background-color:#292929;
-    
-            color: #FF5050;
-            font-family: "Instrument Sans", system-ui;
-            font-optical-sizing: auto;
-            -webkit-font-smoothing: antialiased;
-            font-weight: 500;
-            font-style: normal;
-            font-size: 15.5px;
-    
-    
-    }
-    
-    .cardTitleDeleteOptionActive:hover{
-            background-color:#FF5050;
-            color: #ffffff;
-    }
-    
-    
 }
 
 

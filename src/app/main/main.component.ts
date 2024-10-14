@@ -38,6 +38,8 @@ export class MainComponent{
   alertRemove:boolean = false;
   alertSave:boolean = false;
 
+  showTasksDone = false;
+
   task:Task = new Task();
   
   tasks:Task[] = [
@@ -45,10 +47,6 @@ export class MainComponent{
     new Task('Guardar 1000 reais todos os meses, até o ano de 2039','Meta: R$45000. Atual: R$12400')
   ];
 
-  tasksCompleted:Task[] = [
-    new Task('Fazer Liçao De matematica','Páginas 301 -> 310,para o dia 31/08'),
-    new Task('Guardar 1000 reais todos os meses, até o ano de 2039','Meta: R$45000. Atual: R$12400')
-  ];
 
 
   constructor(private router: Router) {}
@@ -136,19 +134,36 @@ export class MainComponent{
     }
   }
 
-  doneCard(index:number):void{
+  async doneCard(index:number):Promise<void>{
+    if(this.tasks[index].allowToUndo === false){
+      return;
+    }
+
     this.tasks[index].done = !this.tasks[index].done;
+
     if(this.tasks[index].done === false){
       this.tasks[index].showUndoText = false;
     }
+
+    this.tasks[index].allowToUndo = false;
+    await this.sleep(1500);
+
+    this.tasks[index].isHide = !this.tasks[index].isHide;
+    this.tasks[index].allowToUndo = true;
+
   }
 
-  viewCardDone():void{
-   this.tasks.forEach((task, index) => {
-      if(task.done === false){
-        task.isHide = true;
-      }
-   });
+  viewCardDone():void{ 
+    this.showTasksDone = !this.showTasksDone;
+    for(var i = 0; i < this.tasks.length; i++){
+     if(this.tasks[i].done == false){
+      this.tasks[i].isHide = !this.tasks[i].isHide;
+     } else {
+      this.tasks[i].isHide = !this.tasks[i].isHide;
+     }
+
+    }
+
   }
 
   addNewTask():void{
@@ -157,13 +172,17 @@ export class MainComponent{
 
   showUndoText(index:number):void{
     if(this.tasks[index].done){
-      this.tasks[index].showUndoText = true;
+      if(this.tasks[index].allowToUndo){
+        this.tasks[index].showUndoText = true;
+      }
     }
   }
 
   hideUndoText(index:number):void{
     if(this.tasks[index].done){
-      this.tasks[index].showUndoText = false;
+      if(this.tasks[index].allowToUndo){
+        this.tasks[index].showUndoText = false;
+      }
     }
   }
 
