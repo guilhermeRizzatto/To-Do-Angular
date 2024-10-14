@@ -3,6 +3,7 @@ import { Component, } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from '../model/task';
 import { TaskService } from '../service/task.service';
+import { User } from '../model/user';
 
 
 @Component({
@@ -175,7 +176,8 @@ export class MainComponent{
   }
 
   addNewTask():void{
-    this.tasks.unshift(new Task('','',true,true,true));   
+    //pegar variavel do login
+    this.tasks.unshift(new Task('','',new User(),true,true,true));   
   }
 
   showUndoText(index:number):void{
