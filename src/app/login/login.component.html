@@ -38,19 +38,19 @@
             <div class="nameCreateIndicator">
                 <p>Nome</p>
             </div>
-            <input [(ngModel)]="user.name" spellcheck="false" class="inputName">
+            <input [(ngModel)]="app.user.name" spellcheck="false" class="inputName">
         </div>
         <div class="emailEnterCardDisable"  [ngClass]="{'emailEnterCardDisable': true, 'emailEnterCardActive': enterAccountActive, 'emailCreateCardActive': createAccountActive}">
             <div class="emailEnterIndicator">
                 <p>Email</p>
             </div>
-            <input [(ngModel)]="user.email" spellcheck="false" class="inputEmail">
+            <input [(ngModel)]="app.user.email" spellcheck="false" class="inputEmail">
         </div>
         <div class="passEnterCardDisable"  [ngClass]="{'passEnterCardDisable': true, 'passEnterCardActive': enterAccountActive, 'passCreateCardActive':createAccountActive}">
             <div class="passIndicator">
                 <p>Senha</p>
             </div>
-            <input [(ngModel)]="user.password" class="inputPass" type="password">
+            <input [(ngModel)]="app.user.password" class="inputPass" type="password">
         </div>
         
         <div class="buttonsDisable" [ngClass]="{'buttonsDisable': true, 'buttonsActive': displayComebackButton}">
@@ -66,7 +66,7 @@
 
         </div>
 
-        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo, {{user.name}}!</div>
+        <div class="enterSucessDisable" [ngClass]="{'enterSucessDisable': true, 'enterSucessActive': enterSucess}">Bem vindo, {{app.user.name}}!</div>
         <div class="createSucessDisable" [ngClass]="{'createSucessDisable': true, 'createSucessActive': createSucess}">Conta criada com sucesso!</div>
 
 

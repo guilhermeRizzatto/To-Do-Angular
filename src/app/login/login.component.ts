@@ -4,6 +4,7 @@ import { UserService } from '../service/user.service';
 import { User } from '../model/user';
 import { catchError, lastValueFrom, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -29,11 +30,9 @@ export class LoginComponent {
   enterSucess:boolean = false;
   createSucess:boolean = false;
 
-  user:User = new User();
-
   mensageError: any = null;
 
-  constructor(private router: Router, private service:UserService) {}
+  constructor(private router: Router, private service:UserService, public app:AppComponent) {}
 
 
   comeback():void{
@@ -49,9 +48,9 @@ export class LoginComponent {
     this.emailValid = false;
     this.clickCount = 0;
 
-    this.user.email = '';
-    this.user.password = '';
-    this.user.name = '';
+    this.app.user.email = '';
+    this.app.user.password = '';
+    this.app.user.name = '';
   }
 
   toggleEnterAccount():void{
@@ -77,9 +76,9 @@ export class LoginComponent {
   async create():Promise<void>{
     if(this.isEmpty() === false){
       this.inputEmpty = false;
-      if(this.isEmailValid(this.user.email)){
+      if(this.isEmailValid(this.app.user.email)){
         this.emailValid = false;
-        this.service.create(this.user).subscribe({
+        this.service.create(this.app.user).subscribe({
           next: async(response) => {
             this.createSucess = true;
             await this.sleep();
@@ -87,9 +86,9 @@ export class LoginComponent {
             this.enterAccountActive = true;
             this.createAccountActive = false;
   
-            this.user.email = '';
-            this.user.name = '';
-            this.user.password = '';
+            this.app.user.email = '';
+            this.app.user.name = '';
+            this.app.user.password = '';
           },
           error: async (error) => {
             this.mensageError = error;
@@ -114,9 +113,9 @@ export class LoginComponent {
 
   isEmpty():boolean{
     if(this.enterAccountActive === true){
-      return (this.user.email === '' || this.user.password === '');
+      return (this.app.user.email === '' || this.app.user.password === '');
     }
-    return (this.user.email === '' || this.user.password === '' || this.user.name === '');
+    return (this.app.user.email === '' || this.app.user.password === '' || this.app.user.name === '');
   }
 
   isEmailValid(email:String):boolean{
@@ -126,16 +125,16 @@ export class LoginComponent {
   async enter():Promise<void>{
     if(this.isEmpty() === false){
       this.inputEmpty = false;
-      if(this.isEmailValid(this.user.email)){
+      if(this.isEmailValid(this.app.user.email)){
         this.emailValid = false;
 
-        this.service.enter(this.user.email,this.user.password).subscribe({
+        this.service.enter(this.app.user.email,this.app.user.password).subscribe({
           next: async(response) => {
             localStorage.setItem('isLogged', 'true');
 
-            this.user = response;
+            this.app.user = response;
 
-            console.log(this.user);
+            console.log(this.app.user);
 
             this.enterSucess = true;
             await this.sleep();

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from './model/user';
 
 
 @Component({
@@ -8,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'To-Do-Angular';
+
+  user:User = new User();
 }

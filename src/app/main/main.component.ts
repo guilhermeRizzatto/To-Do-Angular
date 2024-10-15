@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Task } from '../model/task';
 import { TaskService } from '../service/task.service';
 import { User } from '../model/user';
+import { LoginComponent } from '../login/login.component';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -51,7 +53,7 @@ export class MainComponent{
 
 
 
-  constructor(private router: Router, private service:TaskService) {}
+  constructor(private router: Router, private service:TaskService, private app:AppComponent) {}
 
 
   expandOptionsCard(index:number):void {   
@@ -176,8 +178,7 @@ export class MainComponent{
   }
 
   addNewTask():void{
-    //pegar variavel do login
-    this.tasks.unshift(new Task('','',new User(),true,true,true));   
+    this.tasks.unshift(new Task('','',this.app.user,true,true,true));   
   }
 
   showUndoText(index:number):void{

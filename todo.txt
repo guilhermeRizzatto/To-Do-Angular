@@ -1,0 +1,2 @@
+[] mudar tudo do main para app.user.tasks
+[] usar animacoes de loading qnd fizer request em ambos components.
