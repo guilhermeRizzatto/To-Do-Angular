@@ -132,7 +132,9 @@ export class LoginComponent {
           next: async(response) => {
             localStorage.setItem('isLogged', 'true');
 
-            this.app.user = response;
+            this.app.user.id = response.id;
+            this.app.user.name = response.name;
+            this.app.user.email = response.email;
 
             console.log(this.app.user);
 

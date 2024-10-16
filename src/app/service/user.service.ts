@@ -20,4 +20,8 @@ export class UserService {
   enter(email:String, password:String):Observable<any>{
     return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password);
   }
+
+  updatePassword(user:User):Observable<any>{
+    return this.http.put<User>(this.url + "/users/put?id=" + user.id, user);
+  }
 }

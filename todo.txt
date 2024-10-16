@@ -1,2 +1,4 @@
+[] fazer uma mensagem de erro quando alterar a senha.
 [] mudar tudo do main para app.user.tasks
 [] usar animacoes de loading qnd fizer request em ambos components.
+[] quando deslogar, resetar o user, para nao aparecer quando clicar em entrar.

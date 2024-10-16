@@ -3,9 +3,8 @@ import { Component, } from '@angular/core';
 import { Router } from '@angular/router';
 import { Task } from '../model/task';
 import { TaskService } from '../service/task.service';
-import { User } from '../model/user';
-import { LoginComponent } from '../login/login.component';
 import { AppComponent } from '../app.component';
+import { UserService } from '../service/user.service';
 
 
 @Component({
@@ -41,6 +40,7 @@ export class MainComponent{
   alertCancel:boolean = false;
   alertRemove:boolean = false;
   alertSave:boolean = false;
+  alertError:boolean = false;
 
   showTasksDone = false;
 
@@ -53,7 +53,7 @@ export class MainComponent{
 
 
 
-  constructor(private router: Router, private service:TaskService, private app:AppComponent) {}
+  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private app:AppComponent) {}
 
 
   expandOptionsCard(index:number):void {   
@@ -91,7 +91,8 @@ export class MainComponent{
     this.alerts = false;
     this.tasks[index].showSaveButton = false;
     await this.sleep(200);
-    this.service.post(this.tasks[index]).subscribe({
+
+    this.taskService.post(this.tasks[index]).subscribe({
       next: async(response) => {
         this.tasks[index].isCardSaved = true;
         await this.sleep(1500);
@@ -102,9 +103,19 @@ export class MainComponent{
     
         this.tasks[index].isCardSaved = false;
         this.tasks[index].enableSaveNewTask = false;
+
+        this.tasks[index].name = response.name;
+        this.tasks[index].description = response.description;
+        this.tasks[index].user = response.user;
       },
-      error: async (error) => {
-          console.log(error);
+      error: async () => {
+        this.alerts = true;
+        this.alertError = true;
+        await this.sleep(2000);
+        this.alertError = false;
+        await this.sleep(200);
+        this.alerts = false;
+        this.tasks[index].showSaveButton = true;
       }    
     });
   }
@@ -220,10 +231,25 @@ export class MainComponent{
   }
 
   async savePassword():Promise<void>{
-    this.isPasswordSaved = true;
-    await this.sleep(1500);
-    this.changePassShow = false;
-    this.isPasswordSaved = false;
+    //this.isPasswordSaved = true;
+   //await this.sleep(1500);
+    //this.changePassShow = false;
+    //this.isPasswordSaved = false;
+
+    console.log(this.app.user.password);
+
+    this.userService.updatePassword(this.app.user).subscribe({
+      next: async(response) => {
+        this.app.user.password = response.password;
+
+        this.isPasswordSaved = true;
+        await this.sleep(1500);
+        this.changePassShow = false;
+        this.isPasswordSaved = false;
+      },
+      error: async () => {
+      }    
+    });
   }
 
 
