@@ -916,13 +916,13 @@
         transition: height 0.25s ease-in-out;
 
         ::-webkit-scrollbar{
-            background-color: #ffffff00;
+            background-color: #00000000;
             width: 7px;
 
         }
         
         ::-webkit-scrollbar-thumb{
-            background-color: rgba(254, 254, 254, 0.634);
+            background-color: rgba(200, 200, 200, 0.647);
             border-radius: 50px;
         }
 
@@ -1720,6 +1720,16 @@
     border: 3px solid #B49AFF;
 }
 
+.newCardTitle::-webkit-scrollbar{
+    width: 7px;
+}
+
+.newCardTitle::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    background-color: rgba(254, 254, 254, 0.262);
+     
+ }
+
 .cardTitleDoneChange{
     background-color: #383838;
     display: flex;
@@ -1826,7 +1836,7 @@
     width: 100%;
     resize: none;
     border: 0px solid #292929;
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 10px;
     white-space: pre-wrap;
     background-color: #292929;

@@ -1,4 +1,9 @@
+[x] quando deslogar, resetar o user, para nao aparecer quando clicar em entrar.
+[x] mudar tudo do main para app.user.tasks
+
 [] fazer uma mensagem de erro quando alterar a senha.
-[] mudar tudo do main para app.user.tasks
+[] retirar console.log desnecessarios.
+[] implementar cookies do usuario, caso nao consiga recuperar os cookies, manda pra tela de login.
+[] implementar a api em removeCard(),doneCard(), e quando sair do focus do title e da description.
 [] usar animacoes de loading qnd fizer request em ambos components.
-[] quando deslogar, resetar o user, para nao aparecer quando clicar em entrar.
+[] nao permitir adicionar qnd estiver vendo os cards concluidos.

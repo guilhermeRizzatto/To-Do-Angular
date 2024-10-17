@@ -44,20 +44,15 @@ export class MainComponent{
 
   showTasksDone = false;
 
-  task:Task = new Task();
-  
-  tasks:Task[] = [
-    new Task('Fazer Liçao De matematica','Páginas 301 -> 310,para o dia 31/08'),
-    new Task('Guardar 1000 reais todos os meses, até o ano de 2039','Meta: R$45000. Atual: R$12400')
-  ];
+  constructor(private router: Router, private taskService:TaskService, private userService:UserService,public app:AppComponent) {}
 
-
-
-  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private app:AppComponent) {}
+  ngOnInit(): void{
+    this.getUser();
+  }
 
 
   expandOptionsCard(index:number):void {   
-    this.tasks[index].expanded = !this.tasks[index].expanded;
+    this.app.user.tasks[index].expanded = !this.app.user.tasks[index].expanded;
   }
 
   async removeCard(index:number):Promise<void> {
@@ -68,9 +63,9 @@ export class MainComponent{
       return;
     }
     this.allowToRemove = false;
-    this.tasks[index].isRemoved = !this.tasks[index].isRemoved;
+    this.app.user.tasks[index].isRemoved = !this.app.user.tasks[index].isRemoved;
     await this.sleep(1500);
-    this.tasks.splice(index, 1);
+    this.app.user.tasks.splice(index, 1);
     this.allowToRemove = true;
     await this.sleep(400);
     this.alertRemove = false;
@@ -89,53 +84,52 @@ export class MainComponent{
     this.alertSave = false;
     await this.sleep(200);
     this.alerts = false;
-    this.tasks[index].showSaveButton = false;
+    this.app.user.tasks[index].showSaveButton = false;
     await this.sleep(200);
 
-    this.taskService.post(this.tasks[index]).subscribe({
+    this.taskService.post(this.app.user.tasks[index],this.app.user).subscribe({
       next: async(response) => {
-        this.tasks[index].isCardSaved = true;
+        this.app.user.tasks[index].isCardSaved = true;
         await this.sleep(1500);
+        
+        this.app.user.tasks[index].isNew = false;
+        
+        this.app.user.tasks[index].isCardSaved = false;
+        this.app.user.tasks[index].enableSaveNewTask = false;
 
-        if(this.tasks[index].isNew === true){
-          this.tasks[index].isNew = false;
-        }
-    
-        this.tasks[index].isCardSaved = false;
-        this.tasks[index].enableSaveNewTask = false;
-
-        this.tasks[index].name = response.name;
-        this.tasks[index].description = response.description;
-        this.tasks[index].user = response.user;
+        this.app.user.tasks[index].name = response.name;
+        this.app.user.tasks[index].description = response.description;
       },
-      error: async () => {
+      error: async (error) => {
+        console.log(error);
         this.alerts = true;
         this.alertError = true;
         await this.sleep(2000);
         this.alertError = false;
         await this.sleep(200);
         this.alerts = false;
-        this.tasks[index].showSaveButton = true;
+        this.app.user.tasks[index].showSaveButton = true;
+        this.app.user.tasks[index].isNew = true;
       }    
     });
   }
 
   async cancelCard(index:number):Promise<void> {
-    if(this.tasks[index].isNew === true){
+    if(this.app.user.tasks[index].isNew === true){
       if(this.allowToCancel === false || this.allowToRemove == false){
         this.alerts = true;
         this.alertCancel = true;
         return;
       }
       this.allowToCancel = false;
-      this.tasks[index].showSaveButton = false;
+      this.app.user.tasks[index].showSaveButton = false;
       await this.sleep(200);
-      this.tasks[index].isCardCanceled = true;
+      this.app.user.tasks[index].isCardCanceled = true;
       await this.sleep(1500);
       
-      this.tasks[index].isCardCanceled = false;
+      this.app.user.tasks[index].isCardCanceled = false;
 
-      this.tasks.splice(index, 1);
+      this.app.user.tasks.splice(index, 1);
       this.allowToCancel = true;
       await this.sleep(400);
       this.alertCancel = false;
@@ -145,43 +139,43 @@ export class MainComponent{
       
     } else {
       
-      this.tasks[index].showSaveButton = false;
+      this.app.user.tasks[index].showSaveButton = false;
       await this.sleep(200);
-      this.tasks[index].isCardCanceled = true;
+      this.app.user.tasks[index].isCardCanceled = true;
       await this.sleep(1500);
       
-      this.tasks[index].isCardCanceled = false;
+      this.app.user.tasks[index].isCardCanceled = false;
     
-      this.tasks[index].enableSaveNewTask = false;
+      this.app.user.tasks[index].enableSaveNewTask = false;
     }
   }
 
   async doneCard(index:number):Promise<void>{
-    if(this.tasks[index].allowToUndo === false){
+    if(this.app.user.tasks[index].allowToUndo === false){
       return;
     }
 
-    this.tasks[index].done = !this.tasks[index].done;
+    this.app.user.tasks[index].done = !this.app.user.tasks[index].done;
 
-    if(this.tasks[index].done === false){
-      this.tasks[index].showUndoText = false;
+    if(this.app.user.tasks[index].done === false){
+      this.app.user.tasks[index].showUndoText = false;
     }
 
-    this.tasks[index].allowToUndo = false;
+    this.app.user.tasks[index].allowToUndo = false;
     await this.sleep(1500);
 
-    this.tasks[index].isHide = !this.tasks[index].isHide;
-    this.tasks[index].allowToUndo = true;
+    this.app.user.tasks[index].isHide = !this.app.user.tasks[index].isHide;
+    this.app.user.tasks[index].allowToUndo = true;
 
   }
 
   viewCardDone():void{ 
     this.showTasksDone = !this.showTasksDone;
-    for(var i = 0; i < this.tasks.length; i++){
-     if(this.tasks[i].done == false){
-      this.tasks[i].isHide = !this.tasks[i].isHide;
+    for(var i = 0; i < this.app.user.tasks.length; i++){
+     if(this.app.user.tasks[i].done == false){
+      this.app.user.tasks[i].isHide = !this.app.user.tasks[i].isHide;
      } else {
-      this.tasks[i].isHide = !this.tasks[i].isHide;
+      this.app.user.tasks[i].isHide = !this.app.user.tasks[i].isHide;
      }
 
     }
@@ -189,21 +183,21 @@ export class MainComponent{
   }
 
   addNewTask():void{
-    this.tasks.unshift(new Task('','',this.app.user,true,true,true));   
+    this.app.user.tasks.unshift(new Task('','',true,true,true));   
   }
 
   showUndoText(index:number):void{
-    if(this.tasks[index].done){
-      if(this.tasks[index].allowToUndo){
-        this.tasks[index].showUndoText = true;
+    if(this.app.user.tasks[index].done){
+      if(this.app.user.tasks[index].allowToUndo){
+        this.app.user.tasks[index].showUndoText = true;
       }
     }
   }
 
   hideUndoText(index:number):void{
-    if(this.tasks[index].done){
-      if(this.tasks[index].allowToUndo){
-        this.tasks[index].showUndoText = false;
+    if(this.app.user.tasks[index].done){
+      if(this.app.user.tasks[index].allowToUndo){
+        this.app.user.tasks[index].showUndoText = false;
       }
     }
   }
@@ -227,16 +221,16 @@ export class MainComponent{
 
   changeLogout():void{
     localStorage.removeItem('isLogged');
+    this.app.user.id = 0;
+    this.app.user.name = '';
+    this.app.user.email = '';
+    this.app.user.password = '';
+    this.app.user.tasks = [];
     this.router.navigate(['/login']);
   }
 
   async savePassword():Promise<void>{
-    //this.isPasswordSaved = true;
-   //await this.sleep(1500);
-    //this.changePassShow = false;
-    //this.isPasswordSaved = false;
-
-    console.log(this.app.user.password);
+    this.app.user.password = this.app.newPassword;
 
     this.userService.updatePassword(this.app.user).subscribe({
       next: async(response) => {
@@ -246,6 +240,7 @@ export class MainComponent{
         await this.sleep(1500);
         this.changePassShow = false;
         this.isPasswordSaved = false;
+        this.app.newPassword = '';
       },
       error: async () => {
       }    
@@ -259,6 +254,22 @@ export class MainComponent{
 
   teste():void{
     console.log("cricou");
+  }
+
+  getUser():void{
+    this.userService.getUser(this.app.user).subscribe({
+      next: async(response) => {
+        this.app.user.id = response.id;
+        this.app.user.name = response.name;
+        this.app.user.email = response.email;
+        this.app.user.tasks = response.tasks;
+
+        console.log(this.app.user);
+      },
+      error: async (error) => {
+        console.log(error);
+      }    
+    });
   }
 
 

@@ -17,6 +17,10 @@ export class UserService {
     return this.http.post<User>(this.url + "/login/create", obj);
   }
 
+  getUser(obj:User):Observable<any>{
+    return this.http.get<User>(this.url + "/users/get/one?email=" + obj.email);
+  }
+
   enter(email:String, password:String):Observable<any>{
     return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password);
   }

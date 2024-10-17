@@ -11,4 +11,6 @@ export class AppComponent {
   title = 'To-Do-Angular';
 
   user:User = new User();
+
+  newPassword:string = '';
 }

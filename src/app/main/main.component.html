@@ -39,7 +39,7 @@
                             <img src="/close.png" class="closeChangePassImg">
                         </button>
                     </div>
-                    <input type="password" class="inputChangePassword" placeholder="Digite a sua nova senha">
+                    <input type="password" class="inputChangePassword" placeholder="Digite a sua nova senha" [(ngModel)]="app.newPassword">
                     <button class="saveNewPassword"  (click)="savePassword()">
                         <p class="savePassword">Salvar</p>
                     </button>
@@ -70,7 +70,7 @@
 
         <div id="board">
 
-            <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableSaveNewTask}" [ngStyle]="{display: task.isHide? 'none':'flex'}" *ngFor="let task of tasks; let i = index">
+            <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableSaveNewTask}" [ngStyle]="{display: task.isHide? 'none':'flex'}" *ngFor="let task of app.user.tasks; let i = index">
                 <div class="removedCard" [ngClass]="{'removedCard': true, 'removedCardActive': task.isRemoved}">
                     <img src="/cruz.png" class="cruz" >
                 </div>

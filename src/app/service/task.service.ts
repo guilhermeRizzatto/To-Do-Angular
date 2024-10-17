@@ -14,8 +14,8 @@ export class TaskService {
   constructor(private http:HttpClient) { }
 
 
-  post(obj:Task):Observable<any>{
-    return this.http.post<Task>(this.url + "/tasks/post", obj);
+  post(obj:Task, user:User):Observable<any>{
+    return this.http.post<Task>(this.url + "/tasks/post?userID=" + user.id, obj);
   }
 
   enter(email:String, password:String):Observable<any>{
