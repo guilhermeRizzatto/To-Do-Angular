@@ -57,21 +57,35 @@ export class MainComponent{
 
   async removeCard(index:number):Promise<void> {
     if(this.allowToRemove === false || this.allowToCancel == false){
-      console.log('espere para cancelar');
       this.alerts = true;
       this.alertRemove = true;
       return;
     }
     this.allowToRemove = false;
-    this.app.user.tasks[index].isRemoved = !this.app.user.tasks[index].isRemoved;
-    await this.sleep(1500);
-    this.app.user.tasks.splice(index, 1);
-    this.allowToRemove = true;
-    await this.sleep(400);
-    this.alertRemove = false;
-    this.alertSave = false;
-    await this.sleep(200);
-    this.alerts = false;
+    
+    this.taskService.delete(this.app.user.tasks[index]).subscribe({
+      next: async() => {
+        this.app.user.tasks[index].isRemoved = !this.app.user.tasks[index].isRemoved;
+        await this.sleep(1500);
+        this.app.user.tasks.splice(index, 1);
+        this.allowToRemove = true;
+        await this.sleep(400);
+        this.alertRemove = false;
+        this.alertSave = false;
+        await this.sleep(200);
+        this.alerts = false;
+      },
+      error: async (error) => {
+        console.log(error);
+        this.alerts = true;
+        this.alertError = true;
+        await this.sleep(2000);
+        this.alertError = false;
+        await this.sleep(200);
+        this.alerts = false;
+        this.allowToRemove = true;
+      }    
+    });
   }
 
 
@@ -97,6 +111,7 @@ export class MainComponent{
         this.app.user.tasks[index].isCardSaved = false;
         this.app.user.tasks[index].enableSaveNewTask = false;
 
+        this.app.user.tasks[index].id = response.id;
         this.app.user.tasks[index].name = response.name;
         this.app.user.tasks[index].description = response.description;
       },
@@ -155,17 +170,38 @@ export class MainComponent{
       return;
     }
 
-    this.app.user.tasks[index].done = !this.app.user.tasks[index].done;
+    this.app.user.tasks[index].allowToUndo = false;
 
+    this.app.user.tasks[index].done = !this.app.user.tasks[index].done;
+    
     if(this.app.user.tasks[index].done === false){
       this.app.user.tasks[index].showUndoText = false;
-    }
+    } 
+    console.log(this.app.user.tasks[index]);
 
-    this.app.user.tasks[index].allowToUndo = false;
-    await this.sleep(1500);
+    this.taskService.update(this.app.user.tasks[index]).subscribe({
+      next: async(response) => {
+        this.app.user.tasks[index].id = response.id;
+        this.app.user.tasks[index].name = response.name;
+        this.app.user.tasks[index].description = response.description;
+        this.app.user.tasks[index].done = response.done;
 
-    this.app.user.tasks[index].isHide = !this.app.user.tasks[index].isHide;
-    this.app.user.tasks[index].allowToUndo = true;
+        await this.sleep(1500);
+
+        this.app.user.tasks[index].isHide = !this.app.user.tasks[index].isHide;
+        this.app.user.tasks[index].allowToUndo = true;
+      },
+      error: async (error) => {
+        console.log(error);
+        this.alerts = true;
+        this.alertError = true;
+        await this.sleep(2000);
+        this.alertError = false;
+        await this.sleep(200);
+        this.alerts = false;
+        this.app.user.tasks[index].allowToUndo = true;
+      }    
+    });
 
   }
 
@@ -183,7 +219,10 @@ export class MainComponent{
   }
 
   addNewTask():void{
-    this.app.user.tasks.unshift(new Task('','',true,true,true));   
+    if(this.showTasksDone === true){
+      this.viewCardDone();
+    }
+    this.app.user.tasks.push(new Task('','',true,true,true));   
   }
 
   showUndoText(index:number):void{
@@ -242,20 +281,44 @@ export class MainComponent{
         this.isPasswordSaved = false;
         this.app.newPassword = '';
       },
-      error: async () => {
+      error: async (error) => {
+        console.log(error);
+        this.alerts = true;
+        this.alertError = true;
+        await this.sleep(2000);
+        this.alertError = false;
+        await this.sleep(200);
+        this.alerts = false;
       }    
     });
   }
 
 
-  private async sleep(timeMs:number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, timeMs));
+  
+  exitFocusTextArea(index:number):void{
+    if(this.app.user.tasks[index].isNew){
+      return;
+    }
+    
+    this.taskService.update(this.app.user.tasks[index]).subscribe({
+      next: async(response) => {
+        this.app.user.tasks[index].id = response.id;
+        this.app.user.tasks[index].name = response.name;
+        this.app.user.tasks[index].description = response.description;
+        this.app.user.tasks[index].done = response.done;
+      },
+      error: async (error) => {
+        console.log(error);
+        this.alerts = true;
+        this.alertError = true;
+        await this.sleep(2000);
+        this.alertError = false;
+        await this.sleep(200);
+        this.alerts = false;
+      }    
+    });
   }
-
-  teste():void{
-    console.log("cricou");
-  }
-
+  
   getUser():void{
     this.userService.getUser(this.app.user).subscribe({
       next: async(response) => {
@@ -263,15 +326,29 @@ export class MainComponent{
         this.app.user.name = response.name;
         this.app.user.email = response.email;
         this.app.user.tasks = response.tasks;
-
+        
         console.log(this.app.user);
+        
+        this.hideTasks();
       },
       error: async (error) => {
         console.log(error);
       }    
     });
   }
-
-
-
+  
+  hideTasks():void{
+    for(var i = 0; i < this.app.user.tasks.length; i++){    
+      if(this.app.user.tasks[i].done == true){
+        this.app.user.tasks[i].isHide = true;
+        this.app.user.tasks[i].allowToUndo = true;
+      }
+    }
+  }
+  
+  
+  private async sleep(timeMs:number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, timeMs));
+  }
+  
 }

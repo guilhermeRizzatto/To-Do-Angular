@@ -2,6 +2,7 @@ import { User } from "./user";
 
 export class Task{
     
+    id:number = 0;
     name:string;
     description:string;
     done:boolean = false;

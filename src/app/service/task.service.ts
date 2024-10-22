@@ -21,4 +21,12 @@ export class TaskService {
   enter(email:String, password:String):Observable<any>{
     return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password);
   }
+  
+  delete(obj:Task):Observable<any>{
+    return this.http.delete<any>(this.url + "/tasks/delete?id=" + obj.id);
+  }
+
+  update(obj:Task):Observable<any>{
+    return this.http.put<Task>(this.url + "/tasks/put?id=" + obj.id, obj);
+  }
 }
