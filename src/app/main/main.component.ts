@@ -5,6 +5,7 @@ import { Task } from '../model/task';
 import { TaskService } from '../service/task.service';
 import { AppComponent } from '../app.component';
 import { UserService } from '../service/user.service';
+import { CookiesService } from '../service/cookies.service';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class MainComponent{
 
   showTasksDone = false;
 
-  constructor(private router: Router, private taskService:TaskService, private userService:UserService,public app:AppComponent) {}
+  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private cookieService:CookiesService,public app:AppComponent) {}
 
   ngOnInit(): void{
     this.getUser();
@@ -265,6 +266,8 @@ export class MainComponent{
     this.app.user.email = '';
     this.app.user.password = '';
     this.app.user.tasks = [];
+
+    this.cookieService.deleteCookie().subscribe({});
     this.router.navigate(['/login']);
   }
 
@@ -320,7 +323,7 @@ export class MainComponent{
   }
   
   getUser():void{
-    this.userService.getUser(this.app.user).subscribe({
+    this.userService.enter(this.app.user.email, this.app.user.password).subscribe({
       next: async(response) => {
         this.app.user.id = response.id;
         this.app.user.name = response.name;

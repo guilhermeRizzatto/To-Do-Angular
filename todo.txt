@@ -3,8 +3,8 @@
 [x] nao permitir adicionar qnd estiver vendo os cards concluidos.
 [x] implementar a api em removeCard(),doneCard(), e quando sair do focus do title e da description.
 [x] fazer uma mensagem de erro quando alterar a senha.
+[x] implementar cookies do usuario, caso nao consiga recuperar os cookies, manda pra tela de login.
 
 [] fazer uma mensagem de erro quando der erro no backend, no login e no criar conta.
 [] retirar console.log desnecessarios.
-[] implementar cookies do usuario, caso nao consiga recuperar os cookies, manda pra tela de login.
 [] usar animacoes de loading qnd fizer request em ambos components.

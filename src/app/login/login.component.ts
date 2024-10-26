@@ -5,6 +5,7 @@ import { User } from '../model/user';
 import { catchError, lastValueFrom, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AppComponent } from '../app.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -33,7 +34,6 @@ export class LoginComponent {
   mensageError: any = null;
 
   constructor(private router: Router, private service:UserService, public app:AppComponent) {}
-
 
   comeback():void{
     this.enterAccountActive = false;

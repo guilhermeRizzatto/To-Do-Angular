@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { provideHttpClient } from '@angular/common/http';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
