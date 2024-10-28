@@ -335,7 +335,8 @@ export class MainComponent{
         this.hideTasks();
       },
       error: async (error) => {
-        console.log(error);
+          localStorage.setItem('isLogged', 'false');
+          this.router.navigate(['/login']);
       }    
     });
   }
