@@ -15,6 +15,9 @@
         <div class="errorEmailExists" *ngIf="errorEmailExists"> 
             <p class="emailErrorText">Erro: este email já foi cadastrado.</p>
         </div>
+        <div class="errorBackend" *ngIf="errorBackend"> 
+            <p class="backendErrorText">Erro no sistema, tente novamente mais tarde.</p>
+        </div>
         <div class="errorPassword" *ngIf="errorPass"> 
             <p class="errorPasswordText">Erro: senha errada.</p>
         </div>

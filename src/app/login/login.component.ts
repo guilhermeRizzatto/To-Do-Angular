@@ -23,6 +23,7 @@ export class LoginComponent {
 
   errorEmailExists:boolean = false;
   errorEmailNotExists:boolean = false;
+  errorBackend:boolean = false;
   errorPass:boolean = false;
   inputEmpty:boolean = false;
   emailValid:boolean = false;
@@ -35,6 +36,10 @@ export class LoginComponent {
 
   constructor(private router: Router, private service:UserService, public app:AppComponent) {}
 
+  ngOnInit(){
+    
+  }
+
   comeback():void{
     this.enterAccountActive = false;
     this.createAccountActive = false;
@@ -43,6 +48,7 @@ export class LoginComponent {
 
     this.errorEmailExists = false;
     this.errorEmailNotExists = false;
+    this.errorBackend = false;
     this.errorPass = false;
     this.inputEmpty = false;
     this.emailValid = false;
@@ -59,6 +65,7 @@ export class LoginComponent {
     this.displayComebackButton = true;
     this.errorEmailExists = false;
     this.errorEmailNotExists = false;
+    this.errorBackend = false;
     this.errorPass = false;
     this.clickCount = 0;
   }
@@ -69,6 +76,7 @@ export class LoginComponent {
     this.displayComebackButton = true;
     this.errorEmailExists = false;
     this.errorEmailNotExists = false;
+    this.errorBackend = false;
     this.errorPass = false;
     this.clickCount = 0;
   }
@@ -91,12 +99,16 @@ export class LoginComponent {
             this.app.user.password = '';
           },
           error: async (error) => {
-            this.mensageError = error;
-            if(this.mensageError.status === 400){
+            this.mensageError = error.error;
+            if (error.status === 0) {
+              this.errorBackend = true;
+              await this.sleep();
+              this.errorBackend = false;
+            } else {
               this.errorEmailExists = true;
               await this.sleep();
               this.errorEmailExists = false;
-            }
+            } 
           }
         });
       } else {
@@ -149,16 +161,19 @@ export class LoginComponent {
           },
           error: async (error) => {
             this.mensageError = error.error;
-            if(this.mensageError.includes('Dont exists any account with this email')){
+            if (error.status === 0) {
+              this.errorBackend = true;
+              await this.sleep();
+              this.errorBackend = false;
+            } else if(this.mensageError.includes('Dont exists any account with this email')){
               this.errorEmailNotExists = true;
               await this.sleep();
               this.errorEmailNotExists = false;
-            }
-            if(this.mensageError.includes('Wrong password')){
+            } else if(this.mensageError.includes('Wrong password')){
               this.errorPass = true;
               await this.sleep();
               this.errorPass = false;
-            }
+            } 
           }
         });
       } else {
