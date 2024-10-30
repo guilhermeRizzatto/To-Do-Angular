@@ -4,8 +4,9 @@
 [x] implementar a api em removeCard(),doneCard(), e quando sair do focus do title e da description.
 [x] fazer uma mensagem de erro quando alterar a senha.
 [x] implementar cookies do usuario, caso nao consiga recuperar os cookies, manda pra tela de login.
+[x] fazer uma mensagem de erro quando der erro no backend, no login e no criar conta.
 
-[] fazer uma mensagem de erro quando der erro no backend, no login e no criar conta.
+[] fazer uma mensagem de erro quando der erro no backend na pagina Main.
 [] retirar console.log desnecessarios.
 [] usar animacoes de loading qnd fizer request em ambos components.
 [] quando clicar em voltar na pagina, nao permitir ir para o main novamente, apenas logando novamente. (talvez)
