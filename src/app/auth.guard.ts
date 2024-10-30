@@ -20,4 +20,5 @@ export class AuthGuard implements CanActivate {
     // Se estiver logado, permite o acesso
     return true;
   }
+
 }

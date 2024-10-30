@@ -1,4 +1,9 @@
 <div id="screen">
+
+    <div class="loading" [ngClass]="{'loading': true, 'loadingActive': loadingService.loading$ | async}">
+        <div class="loading-spinner"></div>
+    </div>
+
     <div class="loginCard" [ngClass]="{'loginCard': true, 'haveAccountCard': enterAccountActive , 'createAccountCard': createAccountActive}">
         <div class="titleLogin" *ngIf="!enterAccountActive">
             <p class="loginText">Login</p>
@@ -27,6 +32,8 @@
         <div class="emailValid" *ngIf="emailValid"> 
             <p class="isEmailValidText">Por favor. Utilize um email válido.</p>
         </div>
+
+
         
 
 
@@ -74,4 +81,5 @@
 
 
     </div>
+
 </div>

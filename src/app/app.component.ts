@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './model/user';
+import { LoadingService } from './service/loading.service';
 
 
 @Component({

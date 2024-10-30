@@ -3,3 +3,18 @@ body{
     margin: 0;
     padding: 0;
 }
+
+.loading-spinner{
+    width: 30px;
+    height: 30px;
+    border: 1.5px solid rgba(0, 0, 0, 0.1); /* Light border */
+    border-top-color: #222222; /* Primary color for the spinner */
+    border-radius: 50%;
+    animation: spin 0.7s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }

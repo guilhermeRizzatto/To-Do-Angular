@@ -8,3 +8,4 @@
 [] fazer uma mensagem de erro quando der erro no backend, no login e no criar conta.
 [] retirar console.log desnecessarios.
 [] usar animacoes de loading qnd fizer request em ambos components.
+[] quando clicar em voltar na pagina, nao permitir ir para o main novamente, apenas logando novamente. (talvez)

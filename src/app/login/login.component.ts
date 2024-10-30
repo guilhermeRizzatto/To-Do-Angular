@@ -1,11 +1,8 @@
 import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
-import { User } from '../model/user';
-import { catchError, lastValueFrom, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 import { AppComponent } from '../app.component';
-import { CookieService } from 'ngx-cookie-service';
+import { LoadingService } from '../service/loading.service';
 
 
 @Component({
@@ -34,11 +31,7 @@ export class LoginComponent {
 
   mensageError: any = null;
 
-  constructor(private router: Router, private service:UserService, public app:AppComponent) {}
-
-  ngOnInit(){
-    
-  }
+  constructor(private router: Router, private service:UserService, public app:AppComponent, public loadingService: LoadingService) {}
 
   comeback():void{
     this.enterAccountActive = false;
@@ -86,8 +79,11 @@ export class LoginComponent {
       this.inputEmpty = false;
       if(this.isEmailValid(this.app.user.email)){
         this.emailValid = false;
+
+        this.loadingService.show();
         this.service.create(this.app.user).subscribe({
           next: async(response) => {
+            this.loadingService.hide();
             this.createSucess = true;
             await this.sleep();
             this.createSucess = false;
@@ -99,6 +95,7 @@ export class LoginComponent {
             this.app.user.password = '';
           },
           error: async (error) => {
+            this.loadingService.hide();
             this.mensageError = error.error;
             if (error.status === 0) {
               this.errorBackend = true;
@@ -108,7 +105,7 @@ export class LoginComponent {
               this.errorEmailExists = true;
               await this.sleep();
               this.errorEmailExists = false;
-            } 
+            }
           }
         });
       } else {
@@ -140,8 +137,10 @@ export class LoginComponent {
       if(this.isEmailValid(this.app.user.email)){
         this.emailValid = false;
 
+        this.loadingService.show();
         this.service.enter(this.app.user.email,this.app.user.password).subscribe({
           next: async(response) => {
+            this.loadingService.hide();
             localStorage.setItem('isLogged', 'true');
 
             this.app.user.id = response.id;
@@ -160,6 +159,7 @@ export class LoginComponent {
             this.createAccountActive = false;
           },
           error: async (error) => {
+            this.loadingService.hide();
             this.mensageError = error.error;
             if (error.status === 0) {
               this.errorBackend = true;
@@ -190,7 +190,7 @@ export class LoginComponent {
   }
 
   private async sleep(): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, 1500));
+    return new Promise(resolve => setTimeout(resolve, 3000)); //1500
   }
 
 

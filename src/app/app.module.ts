@@ -7,8 +7,9 @@ import { MainComponent } from './main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { provideHttpClient } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
