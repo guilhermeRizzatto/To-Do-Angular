@@ -21,6 +21,10 @@ export class Task{
     isNew:boolean = false;
     isHide:boolean = false;
 
+    //backup variables
+    oldName:string = "";
+    oldDescription:string = "";
+
     constructor(name?:string, description?:string, isNew?:boolean, showSaveButton?:boolean, enableSaveNewTask?:boolean){
         this.name = name ?? '';
         this.description = description ?? '';

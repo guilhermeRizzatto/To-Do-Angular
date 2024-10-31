@@ -68,9 +68,16 @@ export class MainComponent{
       return;
     }
     this.allowToRemove = false;
+
+    this.app.user.tasks[index].showLoadingCardChanges = true;
+    this.loadingService.show();
+
+    await this.sleep(1000);
     
     this.taskService.delete(this.app.user.tasks[index]).subscribe({
       next: async() => {
+        this.loadingService.hide();
+        this.app.user.tasks[index].showLoadingCardChanges = false;
         this.app.user.tasks[index].isRemoved = !this.app.user.tasks[index].isRemoved;
         await this.sleep(1500);
         this.app.user.tasks.splice(index, 1);
@@ -82,6 +89,8 @@ export class MainComponent{
         this.alerts = false;
       },
       error: async (error) => {
+        this.loadingService.hide();
+        this.app.user.tasks[index].showLoadingCardChanges = false;
         console.log(error);
         this.alerts = true;
         this.alertError = true;
@@ -326,21 +335,38 @@ export class MainComponent{
     });
   }
 
-
+  enterFocus(index:number):void{
+    this.app.user.tasks[index].oldName = this.app.user.tasks[index].name;
+    this.app.user.tasks[index].oldDescription = this.app.user.tasks[index].description;
+  }
   
-  exitFocusTextArea(index:number):void{
+  async exitFocusTextArea(index:number):Promise<void>{
     if(this.app.user.tasks[index].isNew){
       return;
     }
+
+    this.app.user.tasks[index].showLoadingCardChanges = true;
+    this.loadingService.show();
+
+    await this.sleep(1000);
     
     this.taskService.update(this.app.user.tasks[index]).subscribe({
       next: async(response) => {
+        this.loadingService.hide();
+        this.app.user.tasks[index].showLoadingCardChanges = false;
         this.app.user.tasks[index].id = response.id;
         this.app.user.tasks[index].name = response.name;
         this.app.user.tasks[index].description = response.description;
         this.app.user.tasks[index].done = response.done;
+
       },
       error: async (error) => {
+        this.loadingService.hide();
+        this.app.user.tasks[index].showLoadingCardChanges = false;
+
+        this.app.user.tasks[index].name = this.app.user.tasks[index].oldName;
+        this.app.user.tasks[index].description = this.app.user.tasks[index].oldDescription;
+
         console.log(error);
         this.alerts = true;
         this.alertError = true;

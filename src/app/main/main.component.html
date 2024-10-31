@@ -83,7 +83,7 @@
                 </div>
                 <div class="cardTitle" [ngClass]="{'cardTitle': true, 'cardTitleExpanded': task.expanded, 'cardTitleRemove': task.isRemoved, 'cardTitleDone': task.done}">
                     <div class="title" [ngClass]="{'title': true}">
-                        <textarea class='cardTitleChange' spellcheck="false" (blur)="exitFocusTextArea(i)" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'newCardTitle':task.isNew, 'cardTitleDoneChange': task.done}" placeholder="Adicione um Título"></textarea>
+                        <textarea class='cardTitleChange' spellcheck="false" (focus)="enterFocus(i)" (blur)="exitFocusTextArea(i)" [(ngModel)]="task.name"  [ngClass]="{'cardTitleChange': true, 'newCardTitle':task.isNew, 'cardTitleDoneChange': task.done}" placeholder="Adicione um Título"></textarea>
                        
                         <button class="cardTitleExpandOptions" (click)="expandOptionsCard(i)" [ngClass]="{'cardTitleExpandOptions': true, 'cardTitleExpandOptionsActive': task.expanded, 'cardTitleExpandOptionsHide': task.isNew}">
                             <img src="/arrowDown512.png" class="arrowDownCard" >
@@ -96,7 +96,7 @@
                 </div>
 
                 
-                <textarea class='cardTextAreaChange' spellcheck="false" (blur)="exitFocusTextArea(i)" [(ngModel)]="task.description" [ngClass]="{'cardTextAreaChange': true, 'cardTextAreaChangeRemove':task.isRemoved}" placeholder="Adicione uma descrição"></textarea>
+                <textarea class='cardTextAreaChange' spellcheck="false" (focus)="enterFocus(i)" (blur)="exitFocusTextArea(i)" [(ngModel)]="task.description" [ngClass]="{'cardTextAreaChange': true, 'cardTextAreaChangeRemove':task.isRemoved}" placeholder="Adicione uma descrição"></textarea>
 
                 <div class="bottomBar" [ngClass]="{'bottomBarHide': task.isNew || task.isRemoved,'bottomBarDefault': !task.done, 'bottomBarDone': task.done, 'bottomBarUndo': task.showUndoText}" >
                     <button class="completeButton" (click)="doneCard(i)" (mouseenter)="showUndoText(i)" (mouseleave)="hideUndoText(i)">
