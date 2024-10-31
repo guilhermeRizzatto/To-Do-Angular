@@ -40,9 +40,12 @@
                         </button>
                     </div>
                     <input type="password" class="inputChangePassword" placeholder="Digite a sua nova senha" [(ngModel)]="app.newPassword">
-                    <button class="saveNewPassword"  (click)="savePassword()">
+                    <button class="saveNewPassword"  (click)="savePassword()" [ngClass]="{'saveNewPassword': true, 'saveNewPasswordShow': savePassShow}">
                         <p class="savePassword">Salvar</p>
                     </button>
+                    <div class="loadingSavePass" [ngClass]="{'loadingSavePass': true, 'loadingSavePassActive': (loadingService.loading$ | async) && showLoadingSavePass}">
+                        <div class="loading-spinner-mini"></div>
+                    </div>
                     <div class="senhaSalvaCard" [ngClass]="{'senhaSalvaCard': true, 'senhaSalvaCardActive': isPasswordSaved}">
                         <p class="senhaSalva">Senha salva!</p>
                     </div>
@@ -69,6 +72,10 @@
 
 
         <div id="board">
+
+            <div class="loadingCards" [ngClass]="{'loadingCards': true, 'loadingCardsActive': (loadingService.loading$ | async) && showLoadingCard}">
+                <div class="loading-spinner"></div>
+            </div>
 
             <div class="card" [ngClass]="{'card': true, 'cardChanged': task.enableSaveNewTask}" [ngStyle]="{display: task.isHide? 'none':'flex'}" *ngFor="let task of app.user.tasks; let i = index">
                 <div class="removedCard" [ngClass]="{'removedCard': true, 'removedCardActive': task.isRemoved}">
@@ -99,6 +106,9 @@
                     <p [ngClass]="{'doneAskShow': !task.done, 'doneAskHide': task.done}">Concluir tarefa</p>
                     <p [ngClass]="{'doneCongratsHide': !task.done || task.showUndoText, 'doneCongratsShow': task.done && !task.showUndoText}" >Tarefa Concluida. Parabéns!</p>
                     <p [ngClass]="{'undoHide': !task.showUndoText, 'undoShow': task.showUndoText}" >Desfazer</p>
+                    <div class="loadingCardChange" [ngClass]="{'loadingCardChange': true, 'loadingCardChangeActive': (loadingService.loading$ | async) && task.showLoadingCardChanges}">
+                        <div class="loading-spinner-mini"></div>
+                    </div>
                 </div>    
 
 

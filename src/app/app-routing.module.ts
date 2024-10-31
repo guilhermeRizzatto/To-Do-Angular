@@ -4,9 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RouterOutlet } from '@angular/router';
 import { AuthGuard } from './auth.guard';
+import { loginAuthGuard } from './loginauth.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, canActivate: [loginAuthGuard]},
   {path: 'main', component: MainComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: '/login', pathMatch: 'full'},
 ];

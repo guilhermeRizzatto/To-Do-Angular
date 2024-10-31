@@ -6,6 +6,7 @@ import { TaskService } from '../service/task.service';
 import { AppComponent } from '../app.component';
 import { UserService } from '../service/user.service';
 import { CookiesService } from '../service/cookies.service';
+import { LoadingService } from '../service/loading.service';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class MainComponent{
   options:boolean = false;
 
   changePassShow:boolean = false;
+  savePassShow:boolean = true;
 
   isPasswordSaved:boolean = false;
 
@@ -43,9 +45,12 @@ export class MainComponent{
   alertSave:boolean = false;
   alertError:boolean = false;
 
+  showLoadingSavePass:boolean = false;
+  showLoadingCard:boolean = false;
+
   showTasksDone = false;
 
-  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private cookieService:CookiesService,public app:AppComponent) {}
+  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private cookieService:CookiesService,public app:AppComponent, public loadingService: LoadingService) {}
 
   ngOnInit(): void{
     this.getUser();
@@ -180,6 +185,10 @@ export class MainComponent{
     } 
     console.log(this.app.user.tasks[index]);
 
+    this.app.user.tasks[index].showLoadingCardChanges = true;
+    this.loadingService.show();
+    await this.sleep(1500);
+
     this.taskService.update(this.app.user.tasks[index]).subscribe({
       next: async(response) => {
         this.app.user.tasks[index].id = response.id;
@@ -187,12 +196,22 @@ export class MainComponent{
         this.app.user.tasks[index].description = response.description;
         this.app.user.tasks[index].done = response.done;
 
+        this.loadingService.hide();
+        this.app.user.tasks[index].showLoadingCardChanges = false;
+
         await this.sleep(1500);
 
         this.app.user.tasks[index].isHide = !this.app.user.tasks[index].isHide;
         this.app.user.tasks[index].allowToUndo = true;
       },
       error: async (error) => {
+        this.loadingService.hide();
+        this.app.user.tasks[index].showLoadingCardChanges = false;
+        if(this.app.user.tasks[index].done === true){
+          this.app.user.tasks[index].done = false;
+        } else if (this.app.user.tasks[index].done === false){
+          this.app.user.tasks[index].done = true;
+        }
         console.log(error);
         this.alerts = true;
         this.alertError = true;
@@ -274,8 +293,15 @@ export class MainComponent{
   async savePassword():Promise<void>{
     this.app.user.password = this.app.newPassword;
 
+    this.savePassShow = false;
+    this.showLoadingSavePass = true;
+    this.loadingService.show();
+
+    await this.sleep(2000);
     this.userService.updatePassword(this.app.user).subscribe({
       next: async(response) => {
+        this.loadingService.hide();
+        this.showLoadingSavePass = false;
         this.app.user.password = response.password;
 
         this.isPasswordSaved = true;
@@ -283,8 +309,11 @@ export class MainComponent{
         this.changePassShow = false;
         this.isPasswordSaved = false;
         this.app.newPassword = '';
+        this.savePassShow = true;
       },
       error: async (error) => {
+        this.loadingService.hide();
+        this.showLoadingSavePass = false;
         console.log(error);
         this.alerts = true;
         this.alertError = true;
@@ -292,7 +321,8 @@ export class MainComponent{
         this.alertError = false;
         await this.sleep(200);
         this.alerts = false;
-      }    
+        this.savePassShow = true;
+      }
     });
   }
 
@@ -322,19 +352,27 @@ export class MainComponent{
     });
   }
   
-  getUser():void{
+  async getUser():Promise<void>{
+    this.showLoadingCard = true;
+    this.loadingService.show();
+    await this.sleep(1000);
     this.userService.enter(this.app.user.email, this.app.user.password).subscribe({
       next: async(response) => {
         this.app.user.id = response.id;
         this.app.user.name = response.name;
         this.app.user.email = response.email;
+
+        this.loadingService.hide();
+        this.showLoadingCard = false;
         this.app.user.tasks = response.tasks;
-        
+
         console.log(this.app.user);
         
         this.hideTasks();
       },
       error: async (error) => {
+          this.loadingService.hide();
+          this.showLoadingCard = false;
           localStorage.setItem('isLogged', 'false');
           this.router.navigate(['/login']);
       }    

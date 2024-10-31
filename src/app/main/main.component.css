@@ -314,6 +314,46 @@
     max-height: 97.3vh;
 }
 
+.loadingCards{
+    position: absolute;
+    height: 0px;
+    width: 40px;
+    background-color: #c1ff6f00;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 10px;
+    margin-bottom: 0px;
+
+    justify-self: center;
+    align-self: flex-end;
+
+
+    transition: margin-bottom 0.2s ease-in-out, 0.2s ease-in-out;
+   
+}
+
+.loadingCardsActive{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background-color: #c1ff6f00;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    justify-self: center;
+    align-self: flex-end;
+
+   
+}
+
 #sideBar{
     background-color: rgba(255, 228, 196, 0);
     position: relative;
@@ -488,6 +528,37 @@
     .saveNewPassword{
         cursor: pointer;
         position: absolute;
+        display: none;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        margin-bottom: 13px;
+        width: 90%;
+        height: 30px;
+        border: none;
+        background-color: #292929;
+
+        transition: background-color 0.25s ease-in-out;
+
+        .savePassword{
+            margin: 0px;
+            font-family: "Instrument Sans", system-ui;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16.5px;
+            color: #C0FF6F;
+
+            transition: color 0.25s ease-in-out;
+        }
+
+    }
+
+    .saveNewPasswordShow{
+        cursor: pointer;
+        position: absolute;
         display: flex;
         text-align: center;
         justify-content: center;
@@ -521,6 +592,37 @@
         .savePassword{
             color: #272727;
         }
+    }
+
+    .loadingSavePass{
+        height: 0px;
+        width: 40px;
+        background-color: #91ff0000;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        margin-top: 110px;
+
+        transition: height 0.2s ease-in-out;
+       
+    }
+
+    .loadingSavePassActive{
+        height: 40px;
+        width: 40px;
+        background-color: #c1ff6f00;
+        overflow: hidden;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        margin-top: 110px;
+       
     }
 
     .senhaSalvaCard{
@@ -1149,6 +1251,7 @@
         flex-shrink: 0;
 
         .completeButton{
+            flex-shrink: 0;
             display: grid;
             grid-area: 1 / 1;
             border: none;
@@ -1208,7 +1311,10 @@
 
     
         .doneAskShow{
-            
+            opacity: 1;
+            flex-shrink: 0;
+            width: 200px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1216,12 +1322,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneAskHide{
-            
+            opacity: 0;
+            flex-shrink: 0;
+            width: 0px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1229,9 +1339,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
+
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneCongratsHide{
+            opacity: 0;
+            width: 0px;
+            flex-shrink: 0;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1239,11 +1356,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneCongratsShow{
+            opacity: 1;
+            width: 200px;
+            flex-shrink: 0;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1251,11 +1373,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .undoHide{
+            opacity: 0;
+            flex-shrink: 0;
+            width: 0px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1263,11 +1390,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .undoShow{
+            opacity: 1;
+            flex-shrink: 0;
+            width: 200px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1275,8 +1407,9 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         transition: font-size 0.25s ease-in-out;
@@ -1293,6 +1426,7 @@
         flex-shrink: 0;
 
         .completeButton{
+            flex-shrink: 0;
             display: grid;
             grid-area: 1 / 1;
             border: none;
@@ -1352,7 +1486,10 @@
 
     
         .doneAskShow{
-            
+            opacity: 1;
+            flex-shrink: 0;
+            width: 200px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1360,12 +1497,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneAskHide{
-            
+            opacity: 0;
+            flex-shrink: 0;
+            width: 0px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1373,11 +1514,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneCongratsHide{
+            opacity: 0;
+            width: 0px;
+            flex-shrink: 0;
+            margin: 0px;
             color: #292929;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1385,11 +1531,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneCongratsShow{
+            opacity: 1;
+            width: 200px;
+            flex-shrink: 0;
+            margin: 0px;
             color: #292929;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1397,11 +1548,17 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .undoHide{
+            opacity: 0;
+            flex-shrink: 0;
+            width: 0px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1409,11 +1566,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .undoShow{
+            opacity: 1;
+            flex-shrink: 0;
+            width: 200px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1421,8 +1583,9 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         transition: background-color 0.25s ease-in-out;
@@ -1439,6 +1602,7 @@
         flex-shrink: 0;
 
         .completeButton{
+            flex-shrink: 0;
             display: grid;
             grid-area: 1 / 1;
             border: none;
@@ -1498,7 +1662,10 @@
 
     
         .doneAskShow{
-            
+            opacity: 1;
+            flex-shrink: 0;
+            width: 200px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1506,12 +1673,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneAskHide{
-            
+            opacity: 0;
+            flex-shrink: 0;
+            width: 0px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1519,11 +1690,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneCongratsHide{
+            opacity: 1;
+            width: 0px;
+            flex-shrink: 0;
+            margin: 0px;
             color: #292929;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1531,11 +1707,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .doneCongratsShow{
+            opacity: 1;
+            width: 200px;
+            flex-shrink: 0;
+            margin: 0px;
             color: #292929;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1543,11 +1724,17 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .undoHide{
+            opacity: 0;
+            flex-shrink: 0;
+            width: 0px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1555,11 +1742,16 @@
             font-weight: 500;
             font-style: normal;
             font-size: 0.0px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         .undoShow{
+            opacity: 1;
+            flex-shrink: 0;
+            width: 200px;
+            margin: 0px;
             color: #ffffff;
             font-family: "Instrument Sans", system-ui;
             font-optical-sizing: auto;
@@ -1567,11 +1759,40 @@
             font-weight: 500;
             font-style: normal;
             font-size: 15.5px;
+            text-align: start;
 
-            transition: font-size 0.25s ease-in-out;
+            transition: width 0.25s ease-in-out, 0.20s ease-in-out;
         }
 
         transition: background-color 0.25s ease-in-out;
+    }
+
+    .loadingCardChange{
+        height: 0px;
+        width: 30px;
+        background-color: #00ffe100;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        flex-shrink: 0;
+
+        transition: margin-bottom 0.2s ease-in-out, height 0.2s ease-in-out;
+       
+    }
+
+    .loadingCardChangeActive{
+        height: 30px;
+        width: 30px;
+        background-color: #c1ff6f00;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    
+       
     }
 
     .bottomBarHide{

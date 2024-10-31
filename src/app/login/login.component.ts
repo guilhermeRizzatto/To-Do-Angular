@@ -138,6 +138,7 @@ export class LoginComponent {
         this.emailValid = false;
 
         this.loadingService.show();
+        await this.sleep();
         this.service.enter(this.app.user.email,this.app.user.password).subscribe({
           next: async(response) => {
             this.loadingService.hide();

@@ -12,6 +12,7 @@ export class Task{
     enableSaveNewTask:boolean = false;
     showSaveButton:boolean = false;
     showUndoText:boolean = false;
+    showLoadingCardChanges:boolean = false;
 
     isCardSaved:boolean = false;
     isCardCanceled:boolean = false;

@@ -930,6 +930,9 @@
         width: 40px;
         background-color: #c1ff6f00;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     
         position: absolute;
         margin-bottom: 290px;
@@ -943,6 +946,9 @@
         width: 40px;
         background-color: #c1ff6f00;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     
         position: absolute;
         margin-bottom: 380px;

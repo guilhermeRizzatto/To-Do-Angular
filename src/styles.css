@@ -7,10 +7,19 @@ body{
 .loading-spinner{
     width: 30px;
     height: 30px;
-    border: 1.5px solid rgba(0, 0, 0, 0.1); /* Light border */
-    border-top-color: #222222; /* Primary color for the spinner */
+    border: 1.5px solid rgba(0, 0, 0, 0.1); 
+    border-top-color: #222222; 
     border-radius: 50%;
     animation: spin 0.7s ease-in-out infinite;
+}
+
+.loading-spinner-mini{
+  width: 25px;
+  height: 25px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1); 
+  border-top-color: #ffffff; 
+  border-radius: 50%;
+  animation: spin 0.7s ease-in-out infinite;
 }
 
 @keyframes spin {
