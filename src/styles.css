@@ -16,8 +16,8 @@ body{
 .loading-spinner-mini{
   width: 25px;
   height: 25px;
-  border: 1.5px solid rgba(0, 0, 0, 0.1); 
-  border-top-color: #ffffff; 
+  border: 1.5px solid rgba(255, 255, 255, 0); 
+  border-top-color: #000000; 
   border-radius: 50%;
   animation: spin 0.7s ease-in-out infinite;
 }

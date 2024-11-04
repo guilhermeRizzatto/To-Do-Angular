@@ -72,7 +72,6 @@ export class MainComponent{
     this.app.user.tasks[index].showLoadingCardChanges = true;
     this.loadingService.show();
 
-    await this.sleep(1000);
     
     this.taskService.delete(this.app.user.tasks[index]).subscribe({
       next: async() => {
@@ -196,7 +195,6 @@ export class MainComponent{
 
     this.app.user.tasks[index].showLoadingCardChanges = true;
     this.loadingService.show();
-    await this.sleep(1500);
 
     this.taskService.update(this.app.user.tasks[index]).subscribe({
       next: async(response) => {
@@ -306,7 +304,6 @@ export class MainComponent{
     this.showLoadingSavePass = true;
     this.loadingService.show();
 
-    await this.sleep(2000);
     this.userService.updatePassword(this.app.user).subscribe({
       next: async(response) => {
         this.loadingService.hide();
@@ -348,7 +345,6 @@ export class MainComponent{
     this.app.user.tasks[index].showLoadingCardChanges = true;
     this.loadingService.show();
 
-    await this.sleep(1000);
     
     this.taskService.update(this.app.user.tasks[index]).subscribe({
       next: async(response) => {
@@ -381,7 +377,6 @@ export class MainComponent{
   async getUser():Promise<void>{
     this.showLoadingCard = true;
     this.loadingService.show();
-    await this.sleep(1000);
     this.userService.enter(this.app.user.email, this.app.user.password).subscribe({
       next: async(response) => {
         this.app.user.id = response.id;
