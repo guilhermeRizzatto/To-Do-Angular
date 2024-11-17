@@ -7,6 +7,7 @@ import { AppComponent } from '../app.component';
 import { UserService } from '../service/user.service';
 import { CookiesService } from '../service/cookies.service';
 import { LoadingService } from '../service/loading.service';
+import { TokenService } from '../service/token.service';
 
 
 @Component({
@@ -50,7 +51,12 @@ export class MainComponent{
 
   showTasksDone = false;
 
-  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private cookieService:CookiesService,public app:AppComponent, public loadingService: LoadingService) {}
+  works:boolean = false;
+  attempt:number = 0;
+
+  constructor(private router: Router, private taskService:TaskService, private userService:UserService,private cookieService:CookiesService,public app:AppComponent, public loadingService: LoadingService,
+              private tokenService:TokenService
+  ) {}
 
   ngOnInit(): void{
     this.getUser();
@@ -71,8 +77,6 @@ export class MainComponent{
 
     this.app.user.tasks[index].showLoadingCardChanges = true;
     this.loadingService.show();
-
-    await this.sleep(1000);
     
     this.taskService.delete(this.app.user.tasks[index]).subscribe({
       next: async() => {
@@ -192,11 +196,9 @@ export class MainComponent{
     if(this.app.user.tasks[index].done === false){
       this.app.user.tasks[index].showUndoText = false;
     } 
-    console.log(this.app.user.tasks[index]);
 
     this.app.user.tasks[index].showLoadingCardChanges = true;
     this.loadingService.show();
-    await this.sleep(1500);
 
     this.taskService.update(this.app.user.tasks[index]).subscribe({
       next: async(response) => {
@@ -306,7 +308,6 @@ export class MainComponent{
     this.showLoadingSavePass = true;
     this.loadingService.show();
 
-    await this.sleep(2000);
     this.userService.updatePassword(this.app.user).subscribe({
       next: async(response) => {
         this.loadingService.hide();
@@ -348,7 +349,6 @@ export class MainComponent{
     this.app.user.tasks[index].showLoadingCardChanges = true;
     this.loadingService.show();
 
-    await this.sleep(1000);
     
     this.taskService.update(this.app.user.tasks[index]).subscribe({
       next: async(response) => {
@@ -379,10 +379,10 @@ export class MainComponent{
   }
   
   async getUser():Promise<void>{
+    
     this.showLoadingCard = true;
     this.loadingService.show();
-    await this.sleep(1000);
-    this.userService.enter(this.app.user.email, this.app.user.password).subscribe({
+    this.userService.getUser(this.app.user.email).subscribe({
       next: async(response) => {
         this.app.user.id = response.id;
         this.app.user.name = response.name;
@@ -397,6 +397,12 @@ export class MainComponent{
         this.hideTasks();
       },
       error: async (error) => {
+          await this.getRefreshToken();
+          if(this.works === true && this.attempt < 1){     
+            this.attempt++;
+            this.getUser();
+            return;
+          }
           this.loadingService.hide();
           this.showLoadingCard = false;
           localStorage.setItem('isLogged', 'false');
@@ -417,6 +423,24 @@ export class MainComponent{
   
   private async sleep(timeMs:number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, timeMs));
+  }
+
+  private async getRefreshToken():Promise<void>{
+    this.showLoadingCard = true;
+    this.loadingService.show();
+    this.tokenService.refresh().subscribe({
+      next: async() => {
+        this.loadingService.hide();
+        this.showLoadingCard = false;
+      },
+      error: async (error) => {
+          console.log(error);
+          this.loadingService.hide();
+          this.showLoadingCard = false;
+          this.works = false;
+      }    
+    });
+    this.works = true;
   }
   
 }

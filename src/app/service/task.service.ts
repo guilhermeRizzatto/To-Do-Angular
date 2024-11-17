@@ -15,18 +15,14 @@ export class TaskService {
 
 
   post(obj:Task, user:User):Observable<any>{
-    return this.http.post<Task>(this.url + "/tasks/post?userID=" + user.id, obj);
-  }
-
-  enter(email:String, password:String):Observable<any>{
-    return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password);
+    return this.http.post<Task>(this.url + "/tasks/post?userID=" + user.id, obj, { withCredentials: true });
   }
   
   delete(obj:Task):Observable<any>{
-    return this.http.delete<any>(this.url + "/tasks/delete?id=" + obj.id);
+    return this.http.delete<any>(this.url + "/tasks/delete?id=" + obj.id, { withCredentials: true });
   }
 
   update(obj:Task):Observable<any>{
-    return this.http.put<Task>(this.url + "/tasks/put?id=" + obj.id, obj);
+    return this.http.put<Task>(this.url + "/tasks/put?id=" + obj.id, obj, { withCredentials: true });
   }
 }

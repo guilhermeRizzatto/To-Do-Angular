@@ -21,6 +21,10 @@ export class UserService {
     return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password, { withCredentials: true });
   }
 
+  getUser(email:String):Observable<any>{
+    return this.http.get<User>(this.url + "/users/get/one?email=" + email , { withCredentials: true });
+  }
+
   updatePassword(user:User):Observable<any>{
     return this.http.put<User>(this.url + "/users/put?id=" + user.id, user, { withCredentials: true});
   }

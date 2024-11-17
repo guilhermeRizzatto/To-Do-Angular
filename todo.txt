@@ -6,7 +6,7 @@
 [x] implementar cookies do usuario, caso nao consiga recuperar os cookies, manda pra tela de login.
 [x] fazer uma mensagem de erro quando der erro no backend, no login e no criar conta.
 [x] fazer uma mensagem de erro quando der erro no backend na pagina Main.
-
-[] retirar console.log desnecessarios.
-[] usar animacoes de loading qnd fizer request em ambos components.
-[] tirar os sleep simulando carregamento.
+[x] resolver o loop infinito do getRefreshToken
+[x] usar animacoes de loading qnd fizer request em ambos components.
+[x] retirar console.log desnecessarios.
+[x] tirar os sleep simulando carregamento.

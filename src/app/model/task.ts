@@ -1,5 +1,3 @@
-import { User } from "./user";
-
 export class Task{
     
     id:number = 0;

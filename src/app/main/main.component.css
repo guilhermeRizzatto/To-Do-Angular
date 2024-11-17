@@ -682,17 +682,17 @@
         transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
     }
     
-    transition: height 0.25s ease-in-out, width 0.25s ease-in-out;
+    transition: height 0.25s ease-in-out, width 0.25s ease-in-out, background-color 0.25s ease-in-out;
 }
 
 #sideBar .addButton:hover{
-    height: 80px;
-    width: 80px;
-    background-color: #B49AFF;
+    height: 70px;
+    width: 70px;
+    background-color: #8B6EDD;
 
     .addIcon{
-        height: 66px;
-        width: 66px;
+        height: 55px;
+        width: 55px;
         margin-bottom: 0px;
     }
 }

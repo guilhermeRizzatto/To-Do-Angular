@@ -138,7 +138,6 @@ export class LoginComponent {
         this.emailValid = false;
 
         this.loadingService.show();
-        await this.sleep();
         this.service.enter(this.app.user.email,this.app.user.password).subscribe({
           next: async(response) => {
             this.loadingService.hide();
@@ -147,8 +146,6 @@ export class LoginComponent {
             this.app.user.id = response.id;
             this.app.user.name = response.name;
             this.app.user.email = response.email;
-
-            console.log(this.app.user);
 
             this.enterSucess = true;
             await this.sleep();
