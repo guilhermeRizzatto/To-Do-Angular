@@ -53,7 +53,7 @@ export class LoginComponent {
   }
 
   toggleEnterAccount():void{
-    this.enterAccountActive = !this.enterAccountActive;
+    this.enterAccountActive = true;
     this.displayButtonsInLogin = false;
     this.displayComebackButton = true;
     this.errorEmailExists = false;
@@ -64,7 +64,7 @@ export class LoginComponent {
   }
 
   toggleCreateAccount():void{
-    this.createAccountActive = !this.createAccountActive;
+    this.createAccountActive = true;
     this.displayButtonsInLogin = false;
     this.displayComebackButton = true;
     this.errorEmailExists = false;
