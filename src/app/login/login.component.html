@@ -67,7 +67,7 @@
             <button class="backButtonDisable" (click)="comeback()" [ngClass]="{'backButtonDisable': true, 'backButtonActive': displayComebackButton}">
                 <- Voltar
             </button>
-            <button class="enterButtonDisable" (click)="enter()" [ngClass]="{'enterButtonDisable': true, 'enterButtonActive': enterAccountActive}">
+            <button class="enterButtonDisable" (click)="enter()" [ngClass]="{'enterButtonDisable': !enterAccountActive, 'enterButtonActive': enterAccountActive}">
                 Entrar ->
             </button>
             <button class="createButtonDisable" (click)="create()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
