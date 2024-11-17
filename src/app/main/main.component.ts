@@ -405,8 +405,6 @@ export class MainComponent{
           }
           this.loadingService.hide();
           this.showLoadingCard = false;
-          localStorage.setItem('isLogged', 'false');
-          this.router.navigate(['/login']);
       }    
     });
   }
