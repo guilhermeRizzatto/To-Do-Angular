@@ -64,13 +64,13 @@
         </div>
         
         <div class="buttonsDisable" [ngClass]="{'buttonsDisable': true, 'buttonsActive': displayComebackButton}">
-            <button class="backButtonDisable" (click)="comeback()" [ngClass]="{'backButtonDisable': true, 'backButtonActive': displayComebackButton}">
+            <button class="backButtonDisable" (click)="comeback()" [ngClass]="{'backButtonDisable': !displayComebackButton, 'backButtonActive': displayComebackButton}">
                 <- Voltar
             </button>
             <button class="enterButtonDisable" (click)="enter()" [ngClass]="{'enterButtonDisable': !enterAccountActive, 'enterButtonActive': enterAccountActive}">
                 Entrar ->
             </button>
-            <button class="createButtonDisable" (click)="create()" [ngClass]="{'createButtonDisable': true, 'createButtonActive': createAccountActive}">
+            <button class="createButtonDisable" (click)="create()" [ngClass]="{'createButtonDisable': !createAccountActive, 'createButtonActive': createAccountActive}">
                 Criar conta ->
             </button>
 
