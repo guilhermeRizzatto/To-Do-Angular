@@ -8,7 +8,7 @@ import { User} from '../model/user';
 })
 export class UserService {
 
-  private url:string = 'https://to-do-springboot-production.up.railway.app/';
+  private url:string = 'https://to-do-springboot-production.up.railway.app';
 
   constructor(private http:HttpClient) { }
 

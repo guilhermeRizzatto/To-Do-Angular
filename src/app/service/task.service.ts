@@ -9,7 +9,7 @@ import { Task } from '../model/task';
 })
 export class TaskService {
 
-  private url:string = 'https://to-do-springboot-production.up.railway.app/';
+  private url:string = 'https://to-do-springboot-production.up.railway.app';
 
   constructor(private http:HttpClient) { }
 
