@@ -13,6 +13,6 @@ export class CookiesService {
 
 
   deleteCookie():Observable<any>{
-    return this.http.delete<any>(this.url + "/cookies/deleteLoginCookie", {withCredentials: true});
+    return this.http.delete<any>(this.url + "/cookies/deleteLoginCookie");
   }
 }

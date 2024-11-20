@@ -18,7 +18,7 @@ export class UserService {
   }
 
   enter(email:String, password:String):Observable<any>{
-    return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password, { withCredentials: true });
+    return this.http.get<User>(this.url + "/login/enter?email=" + email + "&password=" + password);
   }
 
   getUser(email:String):Observable<any>{

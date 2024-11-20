@@ -299,6 +299,8 @@ export class MainComponent{
 
     this.cookieService.deleteCookie().subscribe({});
     this.router.navigate(['/login']);
+
+    this.loadingService.hide();
   }
 
   async savePassword():Promise<void>{
