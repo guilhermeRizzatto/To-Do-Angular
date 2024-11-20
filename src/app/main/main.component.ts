@@ -400,7 +400,7 @@ export class MainComponent{
       },
       error: async (error) => {
           await this.getRefreshToken();
-          if(this.works === true && this.attempt < 1){     
+          if(this.works === true && this.attempt < 10){     
             this.attempt++;
             this.getUser();
             return;
