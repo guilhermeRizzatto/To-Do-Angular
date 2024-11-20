@@ -297,6 +297,7 @@ export class MainComponent{
     this.app.user.password = '';
     this.app.user.tasks = [];
 
+    this.loadingService.hide();
     this.cookieService.deleteCookie().subscribe({});
     this.router.navigate(['/login']);
 
@@ -325,7 +326,6 @@ export class MainComponent{
       },
       error: async (error) => {
         this.loadingService.hide();
-        this.showLoadingSavePass = false;
         console.log(error);
         this.alerts = true;
         this.alertError = true;
@@ -400,13 +400,19 @@ export class MainComponent{
       },
       error: async (error) => {
           await this.getRefreshToken();
-          if(this.works === true && this.attempt < 10){     
+          if(this.works === true && this.attempt < 5){     
             this.attempt++;
             this.getUser();
             return;
           }
           this.loadingService.hide();
           this.showLoadingCard = false;
+          this.alerts = true;
+          this.alertError = true;
+          await this.sleep(2000);
+          this.alertError = false;
+          await this.sleep(200);
+          this.alerts = false;
       }    
     });
   }

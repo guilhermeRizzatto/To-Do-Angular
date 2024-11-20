@@ -12,7 +12,6 @@ export class LoadingService {
   public loading$ = this.loading.asObservable();
 
   show() {
-    console.log('Loading started');
     this.requestCount++;
     this.loading.next(true);
   }
