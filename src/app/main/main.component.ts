@@ -297,11 +297,10 @@ export class MainComponent{
     this.app.user.password = '';
     this.app.user.tasks = [];
 
-    this.loadingService.hide();
     this.cookieService.deleteCookie().subscribe({});
     this.router.navigate(['/login']);
 
-    this.loadingService.hide();
+    this.loadingService.hideAll();
   }
 
   async savePassword():Promise<void>{
@@ -394,7 +393,6 @@ export class MainComponent{
         this.showLoadingCard = false;
         this.app.user.tasks = response.tasks;
 
-        console.log(this.app.user);
         
         this.hideTasks();
       },

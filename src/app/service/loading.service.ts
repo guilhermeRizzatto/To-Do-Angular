@@ -22,4 +22,8 @@ export class LoadingService {
       this.loading.next(false);
     }
   }
+
+  hideAll(){
+    this.loading.next(false);
+  }
 }
